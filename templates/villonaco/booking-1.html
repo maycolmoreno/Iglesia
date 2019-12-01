@@ -1,0 +1,321 @@
+{% extends 'villonaco/base.html' %}
+{% load staticfiles %}
+{% block title %}
+Inicio
+{% endblock title%}
+{% block scripts %}
+	
+
+{% endblock scripts %}
+{% block body %}
+<script type="text/javascript">
+	
+				
+		function rescatarValores() {
+			
+			var result = [];
+			var tabla = document.getElementById("tabla");
+			var i = tabla.rows.length;
+
+			if(i == 0) {
+				for(var j = 0; j < i; j++) {
+					for(var k = 0; k < 5; k++) {
+						var data = [tabla.rows[j].cell[k].innerHTML];
+						result[j] = data;
+					}
+				}
+			} 
+
+			//var items = new array(tabla.rows.legth);
+			return result;
+		}
+
+		function agregarItem(adulto, nino, tipo, precio, nro) {
+
+			var tabla = document.getElementById("tabla");
+			var nrorooms = 1;//$("#nro").val();
+			
+			
+			//var aux = auxTipo.split(" - ");
+			//var tipo = aux[0];
+			//alert(nino + " " + adulto + " " + tipo + " " + precio);
+			var precio = precio.replace(",",".");
+			precio = precio / nro;
+			if(tabla.rows.length == 0) {
+				var fila = "<tr><th>Nro</th>"+"<th>Tipo de habitacion</th>"+"<th>Adultos</th>"+"<th>Niños</th>"+"<th>Precio</th></tr>";			
+				var btn = document.createElement("tr");			
+				btn.innerHTML = fila;
+				tabla.appendChild(btn);
+			}
+			var diasid = document.getElementById("duracion");
+			var dias = diasid.value;
+			var texto1 = "";
+			//for(var i = 1; i < nino.length; i++) {
+				//alert(nino[i].value);
+				var valor = ((precio*1)/2);
+				var valorTotal = ((precio*1*(dias*1)) + ((valor*1)*nino)*(dias*1));
+				//var perss = ((v))
+				var fila = "<tr><th>"+nrorooms+"</th>"+"<td>"+tipo+"</td>"+"<td>"+adulto+"</td>"+"<td>"+nino+"</td>"+"<td>"+valorTotal+"</td>"+"</tr>";
+				
+				
+				var btn = document.createElement("tr");
+				texto1 = texto1 + nrorooms + ":" +tipo + ":" + adulto + ":" + nino + ":" +valorTotal + ";";
+				btn.innerHTML = fila;
+				tabla.appendChild(btn);
+			//}
+
+			var idreserva = document.getElementById("idreserva");	
+			idreserva.value = idreserva.value + (texto1);
+			var total = document.getElementById("total");
+			var totalA = total.innerHTML;
+			totalA = (totalA*1)+valorTotal;
+			total.innerHTML = totalA.toFixed(2);
+			var totalS = document.getElementById("total1");
+			totalS.innerHTML = "$";
+			var idtotal = document.getElementById("idtotal");
+			idtotal.value = totalA.toFixed(2);
+			//$('#nro > option[value=""]').attr('selected', 'selected');
+			$('#boton').removeAttr('disabled');
+			
+		}
+</script>
+<body class="booking">
+	<div class="main-wrapper">
+		<!-- Header Section -->
+		{% block header %}
+		<header id="main-header">
+			<div class="inner-container container">
+				<div class="l-sec col-xs-8 col-sm-6 col-md-3">
+					<a href="#" id="t-logo">
+						<img align= "right" class="img-responsive" src="{% static 'img/logo/villo2.png'%}">
+					</a> <!-- Esta es una etiqueta a -->
+				</div>
+				<div class="r-sec col-xs-4 col-sm-6 col-md-9">
+					<nav id="main-menu">
+						<ul class="list-inline">
+							<li><a href="/">Inicio</a> </li>
+							<li><a href="{% url 'quienes_somos' %}">Quiénes Somos</a> </li>
+							<li><a href="{% url 'habitaciones' %}">Habitaciones</a> </li>
+							<li><a href="{% url 'galeria' %}">Galería</a> </li>
+							<li ><a href="{% url 'contactos' %}">Contactos</a></li>	
+						</ul>
+					</nav>
+					<div id="main-menu-handle" class="ravis-btn btn-type-2"><i class="fa fa-bars"></i><i class="fa fa-close"></i></div><!-- Mobile Menu handle -->
+					{% if user.is_authenticated %}
+					<a href="/accounts/logout" id="header-book-bow" class="ravis-btn btn-type-2">
+					<i class="glyphicon glyphicon-log-out"></i>
+					<span>Cerrar Sesion</span> 
+					</a>
+					{% else %}
+					<a href="{% url 'disponibilidad' %}" id="header-book-bow" class="ravis-btn btn-type-2">
+					<span>Iniciar Sesion</span> 
+					<i class="fa fa-calendar"></i>
+					</a>
+					{% endif %}
+				</div>
+			</div>
+			<div id="mobile-menu-container"></div>
+		</header>
+	{% endblock header %}
+		<!-- End of Header Section -->
+	{% block contenido1 %}
+
+		<!--Breadcrumb Section-->
+		<section id="breadcrumb-section" data-bg-img="../assets/img/breadcrumb.jpg">
+			<div class="inner-container container">
+			</div>
+		</section>
+		<!--End of Breadcrumb Section-->
+	{% endblock contenido1 %}
+	
+	{% block contenido2 %}
+
+
+	<section id="booking-section" class="step-2">
+		<div class="inner-container container">
+			<div class="col-md-4 l-sec">
+				<div class="ravis-title-t-2">
+					<div class="title"><span>Información de la reserva</span></div>
+				</div>
+					<div class="selected-room-container">
+
+					<table class="table_reserve" id="tabla"></table>
+					<div style="text-align: right;">
+						<label id="total1" style="text-align: right;"></label>
+						<label id="total" style="text-align: center;"></label>	
+					</div>
+					
+					
+				</div>
+					<div class="field-row room-field" id="room-field-tmpl">
+					<div class="title">Room {{id}}:</div>
+					<select name="adult[]" class="adult-field disable-select2">
+						<option value="1">1 Adult</option>
+						<option value="2">2 Adults</option>
+						<option value="3">3 Adults</option>
+						<option value="4">4 Adults</option>
+						<option value="5">5 Adults</option>
+					</select>
+					<select name="child[]" class="disable-select2">
+						<option value="0">No Child</option>
+						<option value="1">1 Children</option>
+						<option value="2">2 Children</option>
+						<option value="3">3 Children</option>
+						<option value="4">4 Children</option>
+						<option value="5">5 Children</option>
+					</select>
+				</div>
+			<form id="room-information-form" action="{% url 'registrar_reserva' %}" method="POST">
+					{% csrf_token %} 	
+					<input type="hidden" name="reserve" id="idreserva"/>
+					<input type="hidden" name="total" id="idtotal"/>
+					<div class="input-daterange12">
+						<div class="input-daterange12">
+							<div class="field-row">
+								<input placeholder="2016-09-14" value="{{fechaEntrada}}"  type="text"
+									   name="inicio" readonly="true" />
+							</div>
+							<div class="field-row">
+								<input placeholder="2016-09-20"  type="text"
+									   name="fin" value="{{fechaSalida}}" readonly="true" />
+							</div>
+								<div class="field-row">
+								<div class="duration-box">						
+										<input type="type" name="duracion" value="{{duracion}}" readonly="true" id="duracion" />
+									</div>
+								</div>
+							</div>
+						</div>
+					<div class="field-row btn-container">
+							<input type="submit" value="Reservar" id="boton" disabled="disabled">
+					</div>
+					</form>
+				</div>
+				<div class="col-md-8 r-sec">
+				<div class="inner-box">
+					<div class="steps">
+						<ul class="list-inline">
+							<li>Elegir Fecha</li>
+							<li class="active">Elegir habitación</li>
+							<li>Realizar la reserva</li>
+							<li>Confirmation</li>
+						</ul>
+					</div>
+
+					<div id="booking-room-container">
+							
+						{% for obj in tipos %}
+							<!--<input value="{{obj.1}} {{obj.0.nombre_tipo}} "/>-->
+							<div class="room-box">
+							<div class="col-md-5 room-img"  data-bg-img='/media/{{obj.0.imagen}}'>
+								
+								<div class="select-room-box">
+									{%if obj.1 > 0 %}
+									<a id="agregar_{{obj.0.id_tipohabitacion}}" href="#">Seleccione una habitación</a>
+									<script type="text/javascript">
+										$(function(){
+											$("#agregar_{{obj.0.id_tipohabitacion}}").click(function(){
+												
+												var arreglo = rescatarValores();
+												
+												var nino = $("#nino_{{obj.0.id_tipohabitacion}}").val();
+												var adulto = $("#adult_{{obj.0.id_tipohabitacion}}").val();
+												var tipo = "{{obj.0.nombre_tipo}}";
+												var precio = "{{obj.0.precio_tipo}}";
+												var nro = "{{obj.0.nro_personas}}";
+												agregarItem(adulto, nino, tipo, precio, nro);
+												
+												
+												var nrototal = document.getElementById("cant_{{obj.0.id_tipohabitacion}}").innerHTML;
+												nrototal = (nrototal*1)-1;
+												var nrototalAux = document.getElementById("cant_{{obj.0.id_tipohabitacion}}");
+												nrototalAux.innerHTML = nrototal;
+												if(nrototal <= 0) {
+													
+													$('#agregar_{{obj.0.id_tipohabitacion}}').hide();
+												}
+												//alert(nrototal);
+											});
+
+										});
+									</script>
+									{%endif %}
+								</div>
+								
+							</div>
+						<div class="r-sec col-md-7">
+							<div class="title-box">
+								<div class="title">{{obj.0.nombre_tipo}}</div>
+								<div class="price">
+									<div class="title">Precio :</div>
+									<div class="value">{{obj.0.precio_tipo}}</div>
+								</div>
+
+								</div>
+							<div class="amenities">
+								<ul class="list-inline clearfix">
+									<li class="col-md-6">
+										<div class="title">Desayuno:</div>
+										<div class="value">Incluido</div>
+									</li>
+									<li class="col-md-6">
+										<div class="title">Room Size :</div>
+										<div class="value">60 sqm</div>
+									</li>
+									<li class="col-md-6">
+										<div class="title">Max Persona:</div>
+										<div class="value">{{obj.0.nro_personas}}</div>
+											</li>
+									<li class="col-md-6">
+										<div class="title">View :</div>
+										<div class="value">Sea</div>
+									</li>
+									<li class="col-md-12">
+										<div class="title">Servicios:</div>
+										<div class="value">Wifi, Cafetería, Estacionamiento privado, <br>TV-Cable, Baño privado y agua caliente.</div>
+									</li>
+
+									<li class="col-md-12">
+										<div class="title">Disponibles:</div>
+										<div class="value">
+											<span id="cant_{{obj.0.id_tipohabitacion}}">{{obj.1}}</span>
+										</div>
+									</li>
+								</ul>
+								<ul>
+								<div class="room-field-container">
+						<div class="field-row room-field" id="room-field-tmpl1">
+						<div class="title">Personas {{id}}:</div>
+						<select id="adult_{{obj.0.id_tipohabitacion}}" class="adult-field disable-select2" >
+							
+							{% for n in obj.2 %}	
+								<option value="{{n}}">{{n}} Adulto(s)</option>
+							{% endfor %}
+						</select>
+						<select id="nino_{{obj.0.id_tipohabitacion}}" class="disable-select2" >
+							{% for n in obj.3 %}	
+								<option value="{{n}}">{{n}} Niño(s)</option>
+							{% endfor %}
+						</select>
+								</div>
+								</div>
+								</ul>		
+							</div>
+							</div>
+						</div>
+						{% endfor %}						
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</section>
+	{% endblock contenido2 %}
+	</div>
+{% endblock body %}
+
+
+<a href="http://www.grandvictoriabh.com/reservas" class="btn btn-lg btn-default btn-reserve pull-right">
+						RESERVA AHORA <span class="fa fa-calendar-check-o"></span>
+					</a>	

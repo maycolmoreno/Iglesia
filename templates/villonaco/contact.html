@@ -1,0 +1,214 @@
+{% extends 'villonaco/base.html' %}
+{% load staticfiles %}
+{% block title %}
+Contactos
+{% endblock title%}
+{% block scripts %}
+	
+
+{% endblock scripts %}
+
+{% block body %}
+<body>
+	<div class="main-wrapper">
+	{% block header %}
+		<header id="main-header">
+			<div class="inner-container container">
+				<div class="l-sec col-xs-8 col-sm-6 col-md-3">
+					<a href="#" id="t-logo">
+						<img align= "right" class="img-responsive" src="{% static 'img/logo/villo2.png'%}">
+					</a>
+				</div>
+				<div class="r-sec col-xs-4 col-sm-6 col-md-9">
+					<nav id="main-menu">
+						<ul class="list-inline">
+							<li ><a href="/">Inicio</a> </li>
+							<li><a href="{% url 'quienes_somos' %}">Quiénes Somos</a> </li>
+							<li><a href="{% url 'habitaciones' %}">Habitaciones</a> </li>
+							<li><a href="{% url 'galeria' %}">Galería</a> </li>
+							<li class="active"><a href="{% url 'contactos' %}">Contactos</a></li>	
+						</ul>
+					</nav>
+					<div id="main-menu-handle" class="ravis-btn btn-type-2"><i class="fa fa-bars"></i><i class="fa fa-close"></i></div><!-- Mobile Menu handle -->
+					{% if user.is_authenticated %}
+					<a href="/accounts/logout" id="header-book-bow" class="ravis-btn btn-type-2">
+					<i class="glyphicon glyphicon-log-out"></i>
+					<span>Cerrar Sesion</span> 
+					</a>
+					{% else %}
+					<a href="{% url 'disponibilidad' %}" id="header-book-bow" class="ravis-btn btn-type-2">
+					<span>Iniciar Sesion</span> 
+					<i class="fa fa-calendar"></i>
+					</a>
+					{% endif %}
+				</div>
+			</div>
+			<div id="mobile-menu-container"></div>
+		</header>
+	{% endblock header %}
+	
+	{% block contenido1 %}
+	<!--Breadcrumb Section-->
+		<section id="breadcrumb-section" data-bg-img="../assets/img/breadcrumb.jpg">
+			<div class="inner-container container">
+				<div class="ravis-title">
+					<div class="inner-box">
+						<div class="title">Contactos</div>
+						<div class="sub-title">Estamos para servirte</div>
+					</div>
+				</div>
+
+				<div class="breadcrumb">
+					<ul class="list-inline">
+						<li><a href="../index.html">Inicio</a></li>
+						<li class="current"><a href="#">Contactos</a></li>
+					</ul>
+				</div>
+			</div>
+		</section>
+		<!--End of Breadcrumb Section-->
+
+	{% endblock contenido1 %}
+	{% block contenido2 %}
+	<!--Contact Section-->
+		<section id="contact-section">
+			<div class="inner-container container">
+				<div class="t-sec">
+					<div class="ravis-title-t-2">
+						<div class="title"><span>Contáctanos</span></div>
+						<div class="sub-title">Contáctenos, estaremos dispuestos a resolver sus dudas</div>
+					</div>
+					<div class="content">
+						Es un placer atenderte, llámanos o escríbenos a nuestro correo. Compartenos tus inquietudes, opiniones, comentarios.
+					</div>
+
+					<div class="contact-info">
+						<div class="contact-inf-box">
+							<div class="icon-box">
+								<i class="fa fa-home"></i>
+							</div>
+							<div class="text">
+								Sucre 07-61 e/ 10 de Agosto y José A. Eguiguren
+							</div>
+						</div>
+						<div class="contact-inf-box">
+							<div class="icon-box">
+								<i class="fa fa-envelope"></i>
+							</div>
+							<div class="text">
+								hotelvillonacoloja@gmail.com
+							</div>
+						</div>
+						<div class="contact-inf-box">
+							<div class="icon-box">
+								<i class="fa fa-phone"></i>
+							</div>
+							<div class="text">
+								(072) 570-199<br>
+								(072) 570-651
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="b-sec clearfix">
+					<div class="contact-form col-md-6">
+						<form action="#" id="contact-form-box">
+							<div class="field-row">
+								<input type="text" name="name" id="contact-name" placeholder="Nombre :" required>
+							</div>
+							<div class="field-row">
+								<input type="text" name="phone" id="contact-phone" placeholder="Teléfono :">
+							</div>
+							<div class="field-row">
+								<input type="email" name="email" id="contact-email" placeholder="Correo :" required>
+							</div>
+							<div class="field-row">
+								<textarea placeholder="Mensaje:" name="message" id="contact-message" required></textarea>
+							</div>
+							<div class="message-box"></div>
+							<div class="field-row">
+								<input type="submit" value="Enviar">
+							</div>
+						</form>
+					</div>
+					<div class="embed-responsive col-md-6 text-center">
+						<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3980.1147921696975!2d-79.2053459856483!3d-3.996814245714391!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91cb4801ceac20b9%3A0x5b039fdf85eb9dce!2sHotel+%22Villonaco%22!5e0!3m2!1ses-419!2ses!4v1503762154606" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!--End of Contact Section-->
+
+	{% endblock contenido2 %}	
+
+	<!--Footer Section-->
+	{% block footer %}
+
+	<footer id="main-footer">
+		<div class="inner-container container">
+			<div class="t-sec clearfix">
+				<div class="widget-box col-sm-8 col-md-5">
+					<a href="#" id="t-logo">
+						<img align= "right" class="img-responsive" src="{% static 'img/logo/villo.png'%}">
+					</a>
+				
+					</div>
+					
+				
+					<div class="widget-box col-sm-7 col-md-4">
+						<h4 class="title">Contactos</h4>
+						<div class="widget-content contact">
+							<ul class="contact-info">
+								<li>
+									<i class="fa fa-home"></i>
+									Sucre 07-61 e/ 10 de Agosto y José A. Eguiguren
+								</li>
+								<li>
+									<i class="fa fa-phone"></i>
+									(072) 570-199
+									(072) 570-651
+								</li>
+								<li>
+									<i class="fa fa-envelope"></i>
+									hotelvillonacoloja@gmail.com
+								</li>
+							</ul>
+						</div>
+					</div>
+				<div class="widget-box col-sm-6 col-md-3">
+					<h4 class="title">Encuéntranos en:</h4>
+					<div class="widget-content contact">
+						<ul class="social-icons list-inline">
+							<li>
+							 	<a href="https://www.facebook.com/Hotel-Villonaco-Loja-1597341817147701/" target="_blank">
+								<i class="fa fa-facebook"></i>
+								</a>
+							</li>
+							<li>
+								<a href="https://twitter.com/Hotel_Villonaco" target="_blank">
+								<i class="fa fa-twitter"></i>
+								</a>
+							</li>
+							
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="b-sec clearfix">
+					<div class="copy-right">
+						<!-- With <i class="fa fa-heart"></i> by <a href="http://ravistheme.com"
+															   target="_blank">RavisTheme</a> © 2016. All Rights
+						Reserved. -->
+					</div>
+					
+				</div>
+			</div>
+		</footer>
+		
+	{% endblock footer %}
+	<!--End of Footer Section-->
+		
+</div>		
+</body>
+{% endblock body %}

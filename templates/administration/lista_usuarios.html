@@ -1,0 +1,66 @@
+{% extends 'administration/base.html' %}
+{% load staticfiles %}
+{% block title %}
+Lista Usuarios
+{% endblock title%}
+
+{% block estilos%}
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/styles-light.css' %}">
+{% endblock estilos%}
+{% block contenido1%}
+<div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title">Usuarios</h4>
+                                <a href="{% url 'crear_usuario' %}" id="header-admin" class="ravis-btn btn-type-2">NUEVO</a>
+                            </div>
+                            <div class="content table-responsive table-full-width">
+                                <table class="table table-hover table-striped" id="myTable" >
+							<thead>
+								<th>Usuario</th>
+								<th>Último acceso</th>
+								<th>Superusuario</th>
+								<th>Empleado</th>
+								<th>Acción</th>
+							</thead>						
+
+							<tbody>
+						{% for objeto in listaUs %}
+							<tr>
+									
+								<td>{{objeto.username}}</td>
+								<td>{{objeto.last_login}}</td>
+								{% if objeto.is_superuser == True %}
+								<td><span class="glyphicon glyphicon-ok"></span></td>
+								{% else %}
+								<td><span class="glyphicon glyphicon-remove"></span></td>
+								{% endif %}
+
+								{% if objeto.is_staff == True %}
+								<td><span class="glyphicon glyphicon-ok"></span></td>
+								{% else %}
+								<td><span class="glyphicon glyphicon-remove"></span></td>
+								{% endif %}
+
+								<td> <a a title="Editar"  href="{% url 'obtener_usuario' pk=objeto.id %}"> <span class="glyphicon glyphicon-edit"></span></a>
+                                      <a a title="Dar de Baja" href="#"> <span class="glyphicon glyphicon-remove"></span></a>
+						                                                
+						        </td>
+								
+							</tr>
+						{% endfor %}
+							</tbody>
+					</table>
+					</div>
+<script type="text/javascript">
+	$(document).ready(function(){
+    	$('#myTable').DataTable();
+	});
+</script> 
+
+{% endblock contenido1%}
+

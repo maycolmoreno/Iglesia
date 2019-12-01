@@ -1,0 +1,64 @@
+{% extends 'administration/base.html' %}
+{% load staticfiles %}
+{% block title %}
+Servicios
+{% endblock title%}
+{% block scripts %}
+    
+
+{% endblock scripts %}
+
+<body>
+<div class="wrapper">
+   {% block contenido1 %}
+
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title">Servicios</h4>
+                                <a href="{% url 'crear_servicio' %}" id="header-admin" class="ravis-btn btn-type-2">NUEVO</a>
+                            </div>
+                            <div class="content table-responsive table-full-width">
+                                <table class="table table-hover table-striped" id="myTable">
+                                    <thead>
+                                        <th>ID</th>
+                                    	<th>Nombre de Servicio</th>
+                                    	<th>Precio</th>
+                                    	<th>Estado</th>
+                                        <th>Acción</th>
+                                    </thead>
+                                    <tbody>
+                                    {% for objeto in listaServicios %}
+                                        <tr>
+                                            <td>{{objeto.id_servicio}}</td>
+                                        	<td>{{objeto.nombre}}</td>
+                                        	<td>{{objeto.precio}}</td>
+                                        	<td>{{objeto.estado}}</td>
+                                            <td>
+                                              <a a title="Editar"  href="{% url 'obtener_servicio' pk=objeto.id_servicio %}"> <span class="glyphicon glyphicon-edit"></span></a>
+                                              <a a title="Dar de Baja" href="#"> <span class="glyphicon glyphicon-remove"></span></a>         
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                       
+                                    </tbody>
+                                </table>
+
+                            </div>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#myTable').DataTable();
+    });
+</script>
+                        </div>
+                    </div>
+    {% endblock contenido1 %}
+
+    </div>
+</div>
+</body>
+
+

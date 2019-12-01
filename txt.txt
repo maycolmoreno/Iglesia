@@ -1,0 +1,8 @@
+pip install pymysql
+Luego, edite el archivo __init__.py en el directorio de origen del proyecto (igual que settings.py)
+
+añadir:
+
+import pymysql
+
+pymysql.install_as_MySQLdb()

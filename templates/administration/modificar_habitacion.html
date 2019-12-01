@@ -1,0 +1,120 @@
+{% extends 'administration/base.html' %}
+{% load staticfiles %}
+{% block title %}
+Modificar Habitación
+{% endblock title%}
+{% block estilos%}
+
+{% endblock estilos%}
+
+{% block scripts %}
+    <script src="{% static 'admin/js/form.js' %}"></script>
+{% endblock scripts %}
+
+
+<body>
+<div class="wrapper">
+
+{% block contenido1 %}
+
+<div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+
+  <form class="well form-horizontal" action=" {% url 'modificar_habitacion' %}" method="POST">
+    {% csrf_token %} 
+    <input type="hidden" name="idvalor" value="0" />
+<fieldset>
+
+<!-- Form Name -->
+<legend>Modificar Habitación</legend>
+
+<!-- Text input-->
+
+<div class="form-group">
+  <label class="col-md-4 control-label">Número de habitación</label>  
+  <div class="col-md-4 inputGroupContainer">
+  <div class="input-group">
+  <span class="input-group-addon"><i class=" fa fa-hashtag"></i></span>
+  <input  name="numero" placeholder="Número Habitación" value="{{habitacion.numero_habitacion}}" class="form-control"  type="number" min="1" step="1">
+    </div>
+  </div>
+</div>
+
+<!-- Text input-->
+
+<div class="form-group">
+  <label class="col-md-4 control-label" >Piso de habitación</label> 
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+  <span class="input-group-addon"><i class="ravis-icon-hotel-front-view"></i></span>
+  <input name="piso" placeholder="Piso de Habitación" value="{{habitacion.piso_habitacion}}" class="form-control"  type="number" min="1" step="1">
+    </div>
+  </div>
+</div>
+
+
+<!-- radio checks -->
+ <div class="form-group">
+                        <label class="col-md-4 control-label"> Estado</label>
+                        <div class="col-md-4">
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="hosting" value="DISPONIBLE"  /> DISPONIBLE
+                                </label>
+                            </div>
+
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="hosting" value="OCUPADA" checked="checked"/> OCUPADA
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="hosting" value="RESERVADA" /> RESERVADA
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+<!-- Select Basic -->
+   
+<div class="form-group"> 
+
+  <label class="col-md-4 control-label">Tipo de habitación</label>
+    <div class="col-md-4 selectContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="fa fa-bed"></i></span>
+    <select name="tiposHabitaciones" class="form-control selectpicker" >
+    {% for objeto in lista %}
+      
+      <option value=" {{objeto.id_tipohabitacion}}">{{objeto.nombre_tipo}}  </option>
+    {% endfor %}
+    </select>
+  </div>
+</div>
+</div>
+
+
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label"></label>
+  <div class="col-md-4">
+    <button type="submit" class="btn btn-warning" >Guardar <span class="glyphicon glyphicon-floppy-disk"></span></button>
+    <a href="{% url 'lista_habitaciones' %}" class="btn btn-warning" >Cancelar <span class="glyphicon glyphicon-floppy-remove"></span></a>
+  </div>
+</div>
+
+</fieldset>
+</form>
+</div>
+    </div><!-- /.container -->
+
+  {% endblock contenido1 %}
+  
+  </div>
+  </div>
+
+</div>
+</body>

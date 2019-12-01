@@ -1,0 +1,60 @@
+{% extends 'administration/base.html' %}
+{% load staticfiles %}
+{% block title %}
+Lista Clientes
+{% endblock title%}
+
+{% block estilos%}
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/styles-light.css' %}">
+{% endblock estilos%}
+{% block contenido1%}
+<div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title">Clientes</h4>
+                                <a href="{% url 'crear_cliente' %}" id="header-admin" class="ravis-btn btn-type-2">NUEVO</a>
+                            </div>
+                            <div class="content table-responsive table-full-width">
+                               <table class="table table-hover table-striped" id="myTable" >
+							<thead>
+								<th>Nombres</th>
+								<th>Apellidos</th>
+								<th>Cédula</th>
+								<th>Nacionalidad</th>
+								<th>Dirección</th>
+								<th>Teléfono</th>
+								<th>Acción</th>
+							</thead>						
+
+							<tbody>
+						{% for objeto in listaPer %}
+							<tr>
+									
+								<td>{{objeto.nombre}}</td>
+								<td>{{objeto.apellido}}</td>
+								<td>{{objeto.cedula}}</td>
+								<td>{{objeto.nacionalidad}}</td>
+								<td>{{objeto.direccion}}</td>
+								<td>{{objeto.telefono}}</td>
+								<td> <a a title="Editar"  href="{% url 'obtener_cliente' pk=objeto.id_persona %}"> <span class="glyphicon glyphicon-edit"></span></a>
+                                    <a a title="Dar de Baja" href="#"> <span class="glyphicon glyphicon-remove"></span></a>
+						                                                
+						        </td>
+								
+							</tr>
+						{% endfor %}
+							</tbody>
+					</table>
+					</div>
+<script type="text/javascript">
+	$(document).ready(function(){
+    	$('#myTable').DataTable();
+	});
+</script> 
+
+{% endblock contenido1%}
+

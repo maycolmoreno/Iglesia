@@ -1,0 +1,94 @@
+{% extends 'administration/base.html' %}
+{% load staticfiles %}
+{% block title %}
+Modificar Tipo de habitación
+{% endblock title%}
+{% block estilos%}
+
+{% endblock estilos%}
+
+{% block scripts %}
+    <script src="{% static 'admin/js/form.js' %}"></script>
+{% endblock scripts %}
+
+
+{% block contenido1 %}
+
+<div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+
+    <form class="well form-horizontal" action="{% url 'modificar_tipohabitacion' %} " enctype="multipart/form-data" method="POST"  id="contact_form">
+    {% csrf_token %} 
+<fieldset>
+
+<!-- Form Name -->
+<legend>Modificar Tipo de Habitación</legend>
+
+<!-- Text input-->
+
+<div class="form-group">
+  <label class="col-md-4 control-label">Imagen</label>  
+  <div class="col-md-4 inputGroupContainer">
+  <div class="input-group">
+  <input name="imagen"  value="{{tipohabitacion.imagen}}" type="file">
+    </div>
+  </div>
+</div>
+
+<!-- Text input-->
+
+<div class="form-group">
+  <label class="col-md-4 control-label" >Nombre</label> 
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+  <span class="input-group-addon"><i class="fa fa-bed"></i></span>
+  <input name="nombre" placeholder="Nombre"  class="form-control" value="{{tipohabitacion.nombre_tipo}}" type="text">
+    </div>
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label">Precio</label>  
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="fa fa-money"></i></span>
+  <input name="precio" placeholder="Precio"  class="form-control" value="{{tipohabitacion.precio_tipo}}"  type="number" step ="0.01">
+    </div>
+  </div>
+</div>
+
+
+<!-- Text input-->
+       
+<div class="form-group">
+  <label class="col-md-4 control-label">Nro. Personas</label>  
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="fa fa-users"></i></span>
+  <input name="personas" placeholder="Nro. Personas"  class="form-control"  value="{{tipohabitacion.nro_personas}}" type="number" min="1" step="1">
+    </div> 
+  </div>
+</div>
+
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label"></label>
+  <div class="col-md-4">
+    <button type="submit" class="btn btn-warning" >Guardar <span class="glyphicon glyphicon-floppy-disk"></span></button>
+    <a href="{% url 'lista_tipohabitaciones' %}" class="btn btn-warning" >Cancelar <span class="glyphicon glyphicon-floppy-remove"></span></a>
+  </div>
+</div>
+
+
+</fieldset>
+</form>
+</div>
+    </div><!-- /.container -->
+
+  {% endblock contenido1 %}
+
+</div>
+</div>

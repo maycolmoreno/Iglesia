@@ -1,0 +1,57 @@
+{% extends "villonaco/base.html" %}
+{% load staticfiles %}
+{% block title %}
+  Iniciar Sesión                                          
+{% endblock title%}
+{% block estilos %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/styles-login.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/styles-light.css' %}">
+{% endblock estilos %}
+{% block scripts %}
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+  <script src="{% static 'js/index.js' %}"></script>  
+
+{% endblock scripts %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+{% block contenido1 %}
+<body>
+	<div class="logmod">
+  	 <div class="logmod__wrapper">
+	  <span class="logmod__close">Close</span>
+		<div class="logmod__container">
+		<h2 class="title">INICIAR SESIÓN</h2>
+			<div class="logmod__heading">
+			 <span class="logmod__heading-subtitle"> Ingrese su usuario y contraseña <strong>para iniciar sesión</strong></span>
+
+			</div>
+		          <div class="logmod__form">
+		            <div class="sminputs">
+		              <div class="input full">
+		                <form method="POST" action='.'>
+						  {% csrf_token %} 
+						  {{ form|crispy }}
+
+						  <input class='btn btn-block btn-primary' type="submit" value="{% trans 'Iniciar sesion' %}" />
+						  <input type="hidden" name="next" value="{{ next }}" />
+
+							<div class='row'>
+								<div class='col-sm-6 col-sm-offset-3'>
+								<br/>
+								<p>{% trans "Has olvidado tu contraseña" %}? <a href="{% url 'auth_password_reset' %}">{% trans "Restablecer" %}</a>!</p>
+								<p>{% trans "No tienes cuenta" %}? <a href="{% url 'registrarse' %}">{% trans "Registrarte" %}</a>!</p>
+								</div>
+							</div>
+						</form>
+					   </div>
+					  </div>
+					</div>
+				</div>
+		   </div>
+	   </div>
+   </body>
+
+
+			
+{% endblock contenido1 %}

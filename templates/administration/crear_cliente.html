@@ -1,0 +1,151 @@
+{% extends 'administration/base.html' %}
+{% load staticfiles %}
+{% block title %}
+Nuevo Cliente
+{% endblock title%}
+{% block estilos%}
+
+{% endblock estilos%}
+
+{% block scripts %}
+    <script src="{% static 'admin/js/form.js' %}"></script>
+{% endblock scripts %}
+
+
+{% block contenido1 %}
+
+<div class="content">
+<script src="{% static 'validacion/js/jquery-1.8.2.min.js' %}"></script>
+  <script src="{% static 'validacion/js/jquery.validationEngine.js' %}"></script>
+  <script src="{% static 'validacion/js/languages/jquery.validationEngine-es.js' %}"></script> 
+   <link rel="stylesheet" type="text/css" href="{% static 'validacion/css/validationEngine.jquery.css' %}">
+  <script type="text/javascript">
+    var t = jQuery.noConflict();
+    t(document).ready(function(){
+
+      t("#id_cedula").addClass("validate[required,maxSize[13],minSize[10], validarCedula]");
+      t("#formID").validationEngine();  
+    });   
+    /**
+    *
+    * @param {jqObject} the field where the validation applies
+    * @param {Array[String]} validation rules for this field
+    * @param {int} rule index
+    * @param {Map} form options
+    * @return an error string if validation failed
+    */
+    function checkHELLO(field, rules, i, options){
+      if (field.val() != "HELLO") {
+        // this allows to use i18 for the error msgs
+        return options.allrules.validate2fields.alertText;
+      }
+    }
+
+  </script>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+
+    <form class="well form-horizontal" action="{% url 'crear_cliente'%} " method="POST"  id="formID">
+    {% csrf_token %}
+<fieldset>
+
+<!-- Form Name -->
+<legend>Nuevo Cliente</legend>
+
+<!-- Text input-->
+
+       <div class="form-group">
+  <label class="col-md-4 control-label">Cédula</label>  
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="fa fa-id-card"></i></span>
+  <input name="cedula" placeholder="Cédula" class="form-control"  type="text"  id="id_cedula">
+    </div>
+  </div>
+</div>
+{% if messages %}
+<ul class="alert alert-danger">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+<!-- Text input-->
+
+<div class="form-group">
+  <label class="col-md-4 control-label">Nombres</label>  
+  <div class="col-md-4 inputGroupContainer">
+  <div class="input-group">
+  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+  <input  name="nombres" placeholder="Nombres" class="form-control"  type="text">
+    </div>
+  </div>
+</div>
+
+<!-- Text input-->
+
+<div class="form-group">
+  <label class="col-md-4 control-label" >Apellidos</label> 
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+  <input name="apellidos" placeholder="Apellidos" class="form-control"  type="text">
+    </div>
+  </div>
+</div>
+
+
+<!-- Text input-->
+       
+<div class="form-group">
+  <label class="col-md-4 control-label">Nacionalidad</label>  
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="fa fa-globe"></i></span>
+  <input name="nacional" placeholder="Nacionalidad" class="form-control" type="text">
+    </div>
+  </div>
+</div>
+
+<!-- Text input-->
+      
+<div class="form-group">
+  <label class="col-md-4 control-label">Dirección</label>  
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+  <input name="direccion" placeholder="Dirección" class="form-control" type="text">
+    </div>
+  </div>
+</div>
+
+<!-- Text input-->
+ 
+<div class="form-group">
+  <label class="col-md-4 control-label">Télefono</label>  
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+  <input name="telefono" placeholder="Télefono" class="form-control"  type="tel">
+    </div>
+  </div>
+</div>
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label"></label>
+  <div class="col-md-4">
+    <button type="submit" class="btn btn-warning" >Guardar <span class="glyphicon glyphicon-floppy-disk"></span></button>
+  </div>
+</div>
+
+
+</fieldset>
+</form>
+</div>
+    </div><!-- /.container -->
+
+  {% endblock contenido1 %}
+
+</div>
+</div>

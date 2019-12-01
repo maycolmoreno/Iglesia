@@ -1,0 +1,111 @@
+{% extends 'administration/base.html' %}
+{% load staticfiles %}
+{% block title %}
+Modificar Usuario
+{% endblock title%}
+{% block estilos%}
+
+{% endblock estilos%}
+
+{% block scripts %}
+    <script src="{% static 'admin/js/form.js' %}"></script>
+{% endblock scripts %}
+
+
+{% block contenido1 %}
+
+<div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+
+    <form class="well form-horizontal" action="{% url 'modificar_usuario'%} " method="POST"  id="contact_form">
+     {% csrf_token %} 
+<fieldset>
+
+<!-- Form Name -->
+<legend>Modificar Usuario</legend>
+
+
+<!-- Text input-->
+
+<div class="form-group">
+  <label class="col-md-4 control-label">Nombres</label>  
+  <div class="col-md-4 inputGroupContainer">
+  <div class="input-group">
+  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+  <input  name="nombres" placeholder="Nombres" class="form-control" value="{{user.first_name}}" type="text">
+    </div>
+  </div>
+</div>
+
+<!-- Text input-->
+
+<div class="form-group">
+  <label class="col-md-4 control-label" >Apellidos</label> 
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+  <input name="apellidos" placeholder="Apellidos" class="form-control" value="{{user.last_name}}" type="text">
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Text input-->
+      
+<div class="form-group">
+  <label class="col-md-4 control-label">Correo</label>  
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="fa fa-envelope-open"></i></span>
+  <input name="correo" placeholder="Correo" class="form-control" value="{{user.email}}" type="email">
+    </div>
+  </div>
+</div>
+
+<!-- Text input-->
+ 
+<div class="form-group">
+  <label class="col-md-4 control-label">Usuario</label>  
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="fa fa-id-card"></i></span>
+  <input name="usuario" placeholder="Usuario" class="form-control" value="{{user.username}}" type="text">
+    </div>
+  </div>
+</div>
+
+<!-- Text input-->
+ 
+<div class="form-group">
+  <label class="col-md-4 control-label">Contraseña</label>  
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="fa fa-key"></i></span>
+  <input name="contra" placeholder="Contraseña" class="form-control" value="{{user.password}}" type="password">
+    </div>
+  </div>
+</div>
+
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label"></label>
+  <div class="col-md-4">
+    <button type="submit" class="btn btn-warning" >Guardar <span class="glyphicon glyphicon-floppy-disk"></span></button>
+
+     <a href="{% url 'lista_usuarios' %}" class="btn btn-warning">Cancelar<span class="glyphicon glyphicon-floppy-disk"></span></a>
+  </div>
+</div>
+
+
+</fieldset>
+</form>
+</div>
+    </div><!-- /.container -->
+
+  {% endblock contenido1 %}
+
+</div>
+</div>

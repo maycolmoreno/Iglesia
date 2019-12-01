@@ -1,0 +1,202 @@
+{% extends 'villonaco/base.html' %}
+{% load staticfiles %}
+{% block title %}
+Habitaciones
+{% endblock title%}
+{% block scripts %}
+	
+
+{% endblock scripts %}
+
+{% block body %}
+<body>
+	<div class="main-wrapper">
+		{% block header %}
+		<header id="main-header">
+			<div class="inner-container container">
+				<div class="l-sec col-xs-8 col-sm-6 col-md-3">
+					<a href="#" id="t-logo">
+						<img align= "right" class="img-responsive" src="{% static 'img/logo/villo2.png'%}">
+					</a>
+				</div>
+				<div class="r-sec col-xs-4 col-sm-6 col-md-9">
+					<nav id="main-menu">
+						<ul class="list-inline">
+							<li ><a href="/">Inicio</a> </li>
+							<li><a href="{% url 'quienes_somos' %}">Quiénes Somos</a> </li>
+							<li class="active"><a href="{% url 'habitaciones' %}">Habitaciones</a> </li>
+							<li><a href="{% url 'galeria' %}">Galería</a> </li>
+							<li ><a href="{% url 'contactos' %}">Contactos</a></li>	
+						</ul>
+					</nav>
+					<div id="main-menu-handle" class="ravis-btn btn-type-2"><i class="fa fa-bars"></i><i class="fa fa-close"></i></div><!-- Mobile Menu handle -->
+					{% if user.is_authenticated %}
+					<a href="/accounts/logout" id="header-book-bow" class="ravis-btn btn-type-2">
+					<i class="glyphicon glyphicon-log-out"></i>
+					<span>Cerrar Sesion</span> 
+					</a>
+					{% else %}
+					<a href="{% url 'disponibilidad' %}" id="header-book-bow" class="ravis-btn btn-type-2">
+					<span>Iniciar Sesion</span> 
+					<i class="fa fa-calendar"></i>
+					</a>
+					{% endif %}
+				</div>
+			</div>
+			<div id="mobile-menu-container"></div>
+		</header>
+	{% endblock header %}
+	
+	{% block contenido1 %}
+		<!--Breadcrumb Section-->
+		<section id="breadcrumb-section" data-bg-img="../assets/img/breadcrumb.jpg">
+			<div class="inner-container container">
+				<div class="ravis-title">
+					<div class="inner-box">
+						<div class="title">Habitaciones</div>
+						<div class="sub-title">Cómodas y Confortables</div>
+					</div>
+				</div>
+				<div class="breadcrumb">
+					<ul class="list-inline">
+						<li><a href="../index.html">Inicio</a></li>
+						<li class="current"><a href="#">Habitaciones</a></li>
+					</ul>
+				</div>
+			</div>
+		</section>
+		<!--End of Breadcrumb Section-->
+	{% endblock contenido1 %}
+
+	{% block contenido2 %}
+	<!--Room Section-->
+		<section id="rooms-section" class="row-view">
+			<div class="inner-container container">
+				<div class="ravis-title-t-2">
+					<div class="title"><span>Nuestras Habitaciones</span></div>
+				</div>
+				<div class="desc">
+					El hotel Villonaco brinda lo mejor de la hospitalidad Lojana a precios muy atractivos. Hospitalidad, atención, comodidad, amabilidad, confianza y calidez que ofrecen a sus huéspedes realmente marcan la diferencia.
+				</div>
+
+				<div class="room-container clearfix">
+				{% for obj in lista %}
+					<div class="room-box row animated-box" data-animation="fadeInUp">
+						<div class="col-md-4 room-img" data-bg-img="/media/{{obj.imagen}}">
+							<a href="{% url 'disponibilidad' %}" class="more-info-url"></a>
+						</div>
+						<div class="r-sec col-md-8">
+							<div class="col-md-6 m-sec">
+								<div class="title-box">
+									<div class="title">{{obj.nombre_tipo}}</div>
+									<div class="price">
+										<div class="title">Precio:</div>
+										<div class="value">{{obj.precio_tipo}}</div>
+									</div>
+								</div>
+								<div class="amenities">
+									<ul class="list-inline clearfix">
+										<li class="col-md-6">
+											<div class="title">Desayuno :</div>
+											<div class="value">Incluido</div>
+										</li>
+		
+										<li class="col-md-6">
+											<div class="title">Personas:</div>
+											<div class="value">{{obj.nro_personas}}</div>
+										</li>
+							
+										<li class="col-md-12">
+											<div class="title">Servicios:</div>
+											<div class="value">Wifi, Baño Privado, Estacionamiento, TV-Cable</div>
+										</li>
+									</ul>
+								</div>
+								<a href="{% url 'disponibilidad' %}" class="more-info">Reservar</a>
+							</div>
+							<div class="col-md-6 desc">
+								<!-- Lorem ipsum dolor sit amet, consectetur adipisicing elit. At cum eius eos fugiat illo
+								illum
+								provident, quas qui quisquam quod sint velit voluptate voluptatum. Ad aperiam aspernatur
+								atque aut consequatur distinctio earum ex fuga fugit hic impedit iure libero minima
+								molestiae nihil obcaecati officia perferendis perspiciatis possimus, quam qui quibusdam
+								quidem reiciendis rem repellendus, sint tempora veniam vero voluptas voluptatum. -->
+							</div>
+						</div>
+					</div>
+					{% endfor %}
+				</div>
+
+			</div>
+		</section>
+		<!--End of Room Section-->
+	{% endblock contenido2 %}	
+	<!--Footer Section-->
+	{% block footer %}
+
+	<footer id="main-footer">
+		<div class="inner-container container">
+			<div class="t-sec clearfix">
+				<div class="widget-box col-sm-8 col-md-5">
+					<a href="#" id="t-logo">
+						<img align= "right" class="img-responsive" src="{% static 'img/logo/villo.png'%}">
+					</a>
+				
+					</div>
+					
+				
+					<div class="widget-box col-sm-7 col-md-4">
+						<h4 class="title">Contactos</h4>
+						<div class="widget-content contact">
+							<ul class="contact-info">
+								<li>
+									<i class="fa fa-home"></i>
+									Sucre 07-61 e/ 10 de Agosto y José A. Eguiguren
+								</li>
+								<li>
+									<i class="fa fa-phone"></i>
+									(072) 570-199
+									(072) 570-651
+								</li>
+								<li>
+									<i class="fa fa-envelope"></i>
+									hotelvillonacoloja@gmail.com
+								</li>
+							</ul>
+						</div>
+					</div>
+				<div class="widget-box col-sm-6 col-md-3">
+					<h4 class="title">Encuéntranos en:</h4>
+					<div class="widget-content contact">
+						<ul class="social-icons list-inline">
+							<li>
+							 	<a href="https://www.facebook.com/Hotel-Villonaco-Loja-1597341817147701/" target="_blank">
+								<i class="fa fa-facebook"></i>
+								</a>
+							</li>
+							<li>
+								<a href="https://twitter.com/Hotel_Villonaco" target="_blank">
+								<i class="fa fa-twitter"></i>
+								</a>
+							</li>
+							
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="b-sec clearfix">
+					<div class="copy-right">
+						<!-- With <i class="fa fa-heart"></i> by <a href="http://ravistheme.com"
+															   target="_blank">RavisTheme</a> © 2016. All Rights
+						Reserved. -->
+					</div>
+					
+				</div>
+			</div>
+		</footer>
+		
+	{% endblock footer %}
+	<!--End of Footer Section-->
+	</div>
+</body>
+{% endblock body%}

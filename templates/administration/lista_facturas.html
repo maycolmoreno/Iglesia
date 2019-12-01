@@ -1,0 +1,82 @@
+{% extends 'administration/base.html' %}
+{% load staticfiles %}
+{% block title %}
+Facturas
+{% endblock title%}
+{% block scripts %}
+    
+
+{% endblock scripts %}
+
+<body>
+<div class="wrapper">
+   {% block contenido1 %}
+
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title">Facturas</h4>
+                                <a href="{% url 'crear_factura' %}" id="header-admin" class="ravis-btn btn-type-2">NUEVA</a>
+                            </div>
+                            <div class="content table-responsive table-full-width">
+                                <table class="table table-hover table-striped" id="myTable">
+                                    <thead>
+                                    	<th>Cliente</th>
+                                    	<th>Fecha factura</th>
+                                    	<th>Número factura</th>
+                                        <th>Total</th>
+                                        <th>Estado</th>
+                                        <th>Acción</th>
+                                        <!-- <th>Estado</th>
+                                        <th>Abono</th> -->
+                                    </thead>
+                                    <tbody>
+                                    {% for objeto in listafactura %}
+                                        <tr>
+                                        	<td>{{objeto.id_persona.nombre}}&nbsp;{{objeto.persona.apellido}}</td>
+                                        	<td>{{objeto.fecha}}</td>
+                                        	<td>{{objeto.numero_factura}}</td>
+                                            <td>{{objeto.total}}</td>
+                                            {% if objeto.estado_factura == True %}
+                                        	<td>Por Cobrar</td>
+                                            {% else %}
+                                            <td>Cancelada</td>
+                                            {% endif %}
+
+                                            <td>
+                                            {% if objeto.estado_factura%}
+                                            <a a title=""  href="{% url 'levantar' pk=objeto.id_factura %}"> <span class="glyphicon glyphicon-ok"></span></a>
+                                             {% endif %}   
+                                             <a a title="Editar"  href="#"> <span class="glyphicon glyphicon-edit"></span></a>
+                                            <a a title="Dar de Baja" href="#"> <span class="glyphicon glyphicon-remove"></span>
+                                            </a>
+
+                                             <a a title="Dar de Baja" href="{% url 'pdf' pk=objeto.id_factura %}"> <span class="glyphicon glyphicon-print"></span>
+                                            </a>
+
+                                              
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                       
+                                    </tbody>
+                                </table>
+
+                            </div>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#myTable').DataTable();
+    });
+</script>
+                        </div>
+                    </div>
+    {% endblock contenido1 %}
+
+    </div>
+</div>
+</body>
+
+

@@ -1,0 +1,69 @@
+{% extends 'administration/base.html' %}
+{% load staticfiles %}
+{% block title %}
+Reservas
+{% endblock title%}
+{% block scripts %}
+    
+
+{% endblock scripts %}
+
+<body>
+<div class="wrapper">
+   {% block contenido1 %}
+
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title">Reservas</h4>
+                                <a href="{% url 'disponibilidad_admin' %}" id="header-admin" class="ravis-btn btn-type-2">NUEVA</a>
+                            </div>
+                            <div class="content table-responsive table-full-width">
+                                <table class="table table-hover table-striped">
+                                    <thead>
+                                        <th>ID</th>
+                                        <th>Cliente</th>
+                                        <th>Fecha reserva</th>
+                                        <th>Entrada</th>
+                                        <th>Salida</th>
+                                        <th>Total</th>
+                                        <th>Acción</th>
+                                        <!-- <th>Estado</th>
+                                        <th>Abono</th> -->
+                                    </thead>
+                                    <tbody>
+                                    {% for objeto in listareserva %}
+                                        <tr>
+                                            <td>{{objeto.id_reserva}}</td>
+                                            <td>{{objeto.persona.nombre}}&nbsp;{{objeto.persona.apellido}}</td>
+                                            <td>{{objeto.fecha_reserva}}</td>
+                                            <td>{{objeto.fecha_entrada}}</td>
+                                            <td>{{objeto.fecha_salida}}</td>
+                                            <td>{{objeto.total}}</td>
+                                            <!-- <td>{{objeto.estado}}</td>
+                                            <td>{{objeto.abono}}</td> -->
+                                            <td>
+                                           
+                                            <a a title="Levantar Reserva"  href="{% url 'detalle_reserva' pk=objeto.id_reserva %}"> <span class=" glyphicon glyphicon-ok"></span></a>
+                                             <a a title="Editar"  href="#"> <span class="glyphicon glyphicon-edit"></span></a>
+                                            <a a title="Dar de Baja" href="#"> <span class="glyphicon glyphicon-remove"></span></a>    
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                       
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+    {% endblock contenido1 %}
+
+    </div>
+</div>
+</body>
+
+

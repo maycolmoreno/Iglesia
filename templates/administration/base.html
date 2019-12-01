@@ -1,0 +1,243 @@
+<!DOCTYPE HTML>
+{% load staticfiles %}
+<html lang="en">
+<head>
+	
+	<meta charset="UTF-8">
+	<link rel="icon" type="image/png" href="{% static 'img/logo/favicon.ico' %}">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<title>{% block title %} TITULO BASE {% endblock %}</title>
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+
+
+    <!-- Bootstrap core CSS     -->
+    <link href="{% static 'admin/css/bootstrap.min.css' %} " rel="stylesheet" />
+
+    <!-- Animation library for notifications   -->
+    <link href="{% static 'admin/css/animate.min.css' %}" rel="stylesheet"/>
+
+    <!--  Light Bootstrap Table core CSS    -->
+    <link href="{% static 'admin/css/light-bootstrap-dashboard.css' %}" rel="stylesheet"/>
+
+
+    <!--  CSS for  Purpose, don't include it in your project     -->
+    <link href="{% static 'admin/css/index.css' %}" rel="stylesheet" />
+
+    <!--  CSS for  Purpose, don't include it in your project     -->
+   
+    <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet" />
+
+
+    <!--     Fonts and icons     -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
+    <link href="{% static 'admin/css/pe-icon-7-stroke.css' %}" rel="stylesheet" />
+    <!-- estilos generales -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles-light.css' %}">
+    <!-- datatable -->
+    <link rel="stylesheet" type="text/css" href="{% static 'admin/css/datatables.css' %}">
+
+	{% block estilos %}
+    
+    {% endblock estilos %}
+    <!--   Core JS Files   -->
+    <script src="{% static 'admin/js/jquery-1.10.2.js' %}" type="text/javascript"></script>
+	<script src="{% static 'admin/js/bootstrap.min.js' %}" type="text/javascript"></script>
+
+	<!--  Checkbox, Radio & Switch Plugins -->
+	<script src="{% static 'admin/js/bootstrap-checkbox-radio-switch.js' %}"></script>
+
+	<!--  Charts Plugin -->
+	<script src="{% static 'admin/js/chartist.min.js' %}"></script>
+
+    <!--  Notifications Plugin    -->
+    <script src="{% static 'admin/js/bootstrap-notify.js' %}"></script>
+
+    <!--  Google Maps Plugin    -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+
+    <!-- Light Bootstrap Table Core javascript and methods for  purpose -->
+	<script src="{% static 'admin/js/light-bootstrap-dashboard.js' %}"></script>
+
+	<!-- Light Bootstrap Table  methods, don't include it in your project! -->
+	<script src="{% static 'admin/js/index.js' %}"></script>
+    <!-- bootstrap -->
+   <!-- datatables -->
+    <script type="text/javascript" src="{% static 'admin/js/datatables.js' %}""></script>
+
+	<!-- scripts base general -->
+    <script type="text/javascript" src="{% static 'js/jquery-3.1.0.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/helper.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/select2.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/imagesloaded.pkgd.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/isotope.pkgd.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/template.js' %}"></script>
+    <script src="{% static 'admin/js/form.js' %}"></script> 
+	{% block scripts %}
+    {% endblock scripts %}
+
+</head>
+<body>
+<div class="wrapper">
+    <div class="sidebar" data-color="orange" data-image="{% static 'admin/img/villo1.jpg' %}">
+	{% block header %}
+    	<!--
+
+        Tip 1: you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple"
+        Tip 2: you can also add an image using data-image tag
+
+    	-->
+
+    	<div class="sidebar-wrapper">
+            <div class="logo">
+                <a href="/" class="simple-text">
+                    Hotel Villonaco
+                </a>
+            </div>
+
+            <ul class="nav">
+                <li class="{% if request.resolver_match.url_name == 'administracion' %}active{% endif %}">
+                    <a href="{%url 'administracion' %}">
+                        <i class="pe-7s-graph"></i>
+                        <p>Inicio</p>
+                    </a>
+                </li>
+                <li class="{% if request.resolver_match.url_name == 'lista_usuarios' %}active{% endif %}">
+                    <a href="{% url 'lista_usuarios' %}">
+                        <i class="pe-7s-id"></i>
+                        <p>Admin. de Usuarios</p>
+                    </a>
+                </li>
+                <li class="{% if request.resolver_match.url_name == 'lista_clientes' %}active{% endif %}">
+                    <a href="{% url 'lista_clientes' %}">
+                        <i class="pe-7s-users"></i>
+                        <p>Admin. de Clientes</p>
+                    </a>
+                </li>
+                 <li class="{% if request.resolver_match.url_name == 'lista_servicios' %}active{% endif %}">
+                    <a href="{% url 'lista_servicios' %}">
+                        <i class="ravis-icon-room-service"></i>
+                        <p>Admin. de Servicios</p>
+                    </a>
+                </li>
+                <li class="{% if request.resolver_match.url_name == 'lista_tipohabitaciones' %}active{% endif %}">
+                    <a href="{% url 'lista_tipohabitaciones' %}">
+                        <i class="ravis-icon-hotel-room "></i>
+                        <p>Admin. Tipo de Habitación</p>
+                    </a>
+                </li>
+                <li class="{% if request.resolver_match.url_name == 'lista_habitaciones' %}active{% endif %}">
+                    <a href="{% url 'lista_habitaciones' %}">
+                        <i class="ravis-icon-hotel-room"></i>
+                        <p>Admin. de Habitaciones</p>
+                    </a>
+                </li>
+                <li class="{% if request.resolver_match.url_name == 'lista_reservas' %}active{% endif %}">
+                    <a href="{% url 'lista_reservas' %}">
+                        <i class="pe-7s-date"></i>
+                        <p>Admin. de Reservas</p>
+                    </a>
+                </li>
+                <li class="{% if request.resolver_match.url_name == 'lista_facturas' %}active{% endif %}">
+                    <a href="{% url 'lista_facturas' %}">
+                        <i class="pe-7s-news-paper"></i>
+                        <p>Generar Factura</p>
+                    </a>
+                </li>
+				<li class="active-pro {% if request.resolver_match.url_name == 'configuracion' %}active{% endif %}">
+                    <a href="{% url 'configuracion' %}">
+                        <i class="pe-7s-tools"></i>
+                        <p>Configuración</p>
+                    </a>
+                </li>
+            </ul>
+    	</div>
+    </div>
+  
+		
+	{% endblock header %}
+	
+	<div class="main-panel">
+     <nav class="navbar navbar-default navbar-fixed">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                   
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-left">
+                        <li class="dropdown">
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="fa fa-globe"></i>
+                                    <b class="caret hidden-sm hidden-xs"></b>
+                                    <span class="notification hidden-sm hidden-xs">5</span>
+                                    <p class="hidden-lg hidden-md">
+                                        5 Notifications
+                                        <b class="caret"></b>
+                                    </p>
+                              </a>
+                              <ul class="dropdown-menu">
+                                <li><a href="#">Notification 1</a></li>
+                                <li><a href="#">Notification 2</a></li>
+                                <li><a href="#">Notification 3</a></li>
+                                <li><a href="#">Notification 4</a></li>
+                                <li><a href="#">Another notification</a></li>
+                              </ul>
+                        </li>
+                        
+                    </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                       <!--  <li>
+                           <a href="">
+                               <p>Account</p>
+                            </a>
+                        </li> -->
+                        
+                        <li>
+                            <a href="/accounts/logout">
+                                <p>Cerrar Sesión</p>
+                            </a>
+                        </li>
+                        <li class="separator hidden-lg hidden-md"></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>   
+	{% block contenido1 %}
+	
+	{% endblock contenido1 %}
+
+	{% block contenido2 %}
+	{% endblock contenido2 %}
+
+	{% block contenido3 %}
+	{% endblock contenido3 %}
+
+	{% block contenido4 %}
+	{% endblock contenido4 %}
+
+	{% block contenido5 %}
+	{% endblock contenido5 %}
+
+	{% block contenido6 %}
+	{% endblock contenido6 %}
+
+	
+	{% block footer %}
+	{% endblock footer %}
+</div>
+
+</div>
+
+</body>
+
+</html>

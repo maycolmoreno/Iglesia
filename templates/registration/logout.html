@@ -1,0 +1,29 @@
+{% extends "villonaco/base.html" %}
+{% load staticfiles %}
+{% block title %}
+  Sesión Terminada                                          
+{% endblock title%}
+
+{% block estilos %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/styles-login.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/styles-light.css' %}">
+{% endblock estilos %}
+
+{% load i18n %}
+
+{% block contenido1 %}
+		<section id="gallery">
+			<div class="inner-container container">
+						<div class="ravis-title">
+							<div class="inner-box">
+								<div class="title">Sesión Terminada</div>
+								<div class="sub-title">Desea Iniciar Sesión?</div>
+							</div>
+						</div>
+				<div class="gallery-container">
+					<a href="{% url 'auth_login' %}" class="gallery-more-btn ravis-btn btn-type-2">Iniciar Sesión</a>
+					<a href="/" class="gallery-more-btn ravis-btn btn-type-2">Página Principal</a>
+				</div>
+			</div>
+		</section>
+{% endblock %}

@@ -1,0 +1,368 @@
+{% extends 'villonaco/base.html' %}
+{% load staticfiles %}
+{% block title %}
+Inicio
+{% endblock title%}
+{% block scripts %}
+	
+
+{% endblock scripts %}
+
+{% block body %}
+ <body class="home-page-1">
+	<div class="main-wrapper">
+
+	{% block header %}
+		<header id="main-header">
+			<div class="inner-container container">
+				<div class="l-sec col-xs-8 col-sm-6 col-md-3">
+					<a href="#" id="t-logo">
+						<img align= "right" class="img-responsive" src="{% static 'img/logo/villo2.png'%}">
+					</a>
+				</div>
+				<div class="r-sec col-xs-4 col-sm-6 col-md-9">
+					<nav id="main-menu">
+						<ul class="list-inline">
+							<li class="active"><a href="/">Inicio</a> </li>
+							<li><a href="{% url 'quienes_somos' %}">Quiénes Somos</a> </li>
+							<li><a href="{% url 'habitaciones' %}">Habitaciones</a> </li>
+							<li><a href="{% url 'galeria' %}">Galería</a> </li>
+							<li ><a href="{% url 'contactos' %}">Contactos</a></li>	
+						</ul>
+					</nav>
+					<div id="main-menu-handle" class="ravis-btn btn-type-2"><i class="fa fa-bars"></i><i class=" fa fa-close"></i></div>
+					{% if user.is_authenticated %}
+					<a href="/accounts/logout" id="header-book-bow" class="ravis-btn btn-type-2">
+					<i class="glyphicon glyphicon-log-out"></i>
+					<span>Cerrar Sesion</span> 
+					</a>
+					{% else %}
+					<a href="{% url 'disponibilidad' %}" id="header-book-bow" class="ravis-btn btn-type-2">
+					<span>Iniciar Sesion</span> 
+					<i class="fa fa-calendar"></i>
+					</a>
+					{% endif %}
+				</div>
+			</div>
+			<div id="mobile-menu-container"></div>
+		</header>
+	{% endblock header %}
+	
+		
+	{% block slider %}
+			<div class="slider-available-sec">
+			<!-- Main Slider -->
+
+			<section id="main-slider">
+
+				<div class="items">
+					<div class="img-container" data-bg-img="{% static 'img/slider/lobby.jpeg' %}"></div>
+					
+					<div class="slide-caption">
+						<div class="inner-container clearfix">
+							<div class="up-sec">Hotel Villonaco</div>
+							<div class="down-sec">"Su hogar en Loja"</div>
+						</div>
+					</div>
+				</div>
+				<div class="items">
+					<div class="img-container" data-bg-img="{% static 'img/slider/villo.jpeg' %}"></div>
+					<div class="slide-caption">
+						<div class="inner-container clearfix">
+							<div class="up-sec">La mejor atención </div>
+							<div class="down-sec">Siéntete como en casa</div>
+						</div>
+					</div>
+				</div>
+				<div class="items">
+					<div class="img-container" data-bg-img="{% static 'img/slider/room.jpeg' %}"></div>
+					<div class="slide-caption">
+						<div class="inner-container clearfix">
+							<div class="up-sec">Habitaciones</div>
+							<div class="down-sec">Cómodas y Confortables</div>
+						</div>
+					</div>
+				</div>
+				<div class="items">	
+					<div class="img-container" data-bg-img="{% static 'img/slider/cielo.jpg' %}"></div>
+					<div class="slide-caption">
+						<div class="inner-container clearfix">
+							<div class="up-sec">Alojamiento</div>
+							<div class="down-sec">Confortable y Satisfactorio</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- End of Main Slider -->
+		</div>
+			
+		
+	{% endblock slider %}
+
+	{% block contenido1 %}
+	<section id="main-availability-form">
+				<div class="inner-container container">
+					<div class="l-sec col-md-8">
+						<div class="ravis-title">
+							<div class="inner-box">
+								<div class="title">Encuentra una habitación</div>
+								<div class="sub-title">Cuando deseas visitarnos</div>
+							</div>
+						</div>
+					</div>
+					<div class="r-sec col-md-4">
+						<form class="booking-form clearfix" action="{% url 'disponibilidad'%}"><!-- Do Not remove the classes -->
+							<div class="col-md-3">
+								<button type="submit" class="ravis-btn btn-type-1">
+									<span class="inner-box">
+										Reserva ahora
+									</span>
+								</button>
+							</div>
+						</form>
+
+					</div>
+				</div>
+			</section>
+	{% endblock contenido1 %}
+	{% block contenido2 %}
+		<!--Welcome Section-->
+		<section id="welcome-section">
+			<div class="inner-container container">
+				<div class="l-sec col-md-7">
+					<div class="ravis-title-t-1">
+				
+						<div class="title"><span>Hotel Villonaco</span></div>
+						<div class="sub-title">Tu segundo hogar en Loja</div>
+					</div>
+					<div class="content">
+						El Hotel Villonaco se encuentra en Loja. Ofrece aparcamiento privado gratuito y WiFi gratis en todas las instalaciones.
+
+						Algunas habitaciones tienen zona de estar, y todas están equipadas con TV de pantalla plana y baño privado con bañera o ducha.<br>
+
+						La recepción se encuentra las 24 horas.
+					</div>
+					<a href="{% url 'quienes_somos' %}" class="ravis-btn btn-type-2">Leer Más..</a>
+				</div>
+				<div class="r-sec col-md-5">
+					<img src="{% static 'img/hotel.jpeg' %}" alt="Hotel Villonaco">
+				</div>
+			</div>
+		</section>
+		<!--End of Welcome Section-->	
+
+	{% endblock contenido2 %}
+
+	{% block contenido3 %}
+		<!--Habitaciones-->
+		<section id="luxury-rooms" class="clearfix">
+			<div class="room-boxes col-sm-6 col-md-4">
+				<a href="{% url 'disponibilidad' %}" class="inner-container" data-bg="{% static 'img/habitaciones/index/simple.jpg' %}">
+					<span class="ravis-title">
+						<span class="inner-box">
+							<span class="title">Simple</span>
+							<span class="sub-title">Habitación de uso individual</span>
+						</span>
+					</span>
+				</a>
+			</div>
+			<div class="room-boxes col-sm-6 col-md-4">
+				<a href="{% url 'disponibilidad' %}" class="inner-container" data-bg="{% static 'img/habitaciones/index/doble.jpeg' %}">
+					<span class="ravis-title">
+						<span class="inner-box">
+							<span class="title">Doble o Matrimonial</span>
+							<span class="sub-title">Habitación ideal para parejas</span>
+						</span>
+					</span>
+				</a>
+			</div>
+			<div class="room-boxes col-sm-12 col-md-4">
+				<a href="{% url 'disponibilidad' %}" class="inner-container" data-bg="{% static 'img/habitaciones/index/triple.jpg' %}">
+					<span class="ravis-title">
+						<span class="inner-box">
+							<span class="title">Triple</span>
+							<span class="sub-title">Habitación para familias pequeñas</span>
+						</span>
+					</span>
+				</a>
+			</div>
+		</section>
+		<!--End Habitaciones-->
+
+	{% endblock contenido3 %}
+
+			
+	{% block contenido4 %}
+	<!-- Gallery -->
+		<section id="gallery">
+			<div class="inner-container container">
+
+				<div class="ravis-title">
+					<div class="inner-box">
+						<div class="title">Galería</div>
+						<div class="sub-title">Te ofrecemos los mejores servicios</div>
+					</div>
+				</div>
+
+				<!-- Gallery Container -->
+				<div class="gallery-container ">
+					<div class="sort-section">
+						<div class="sort-section-container">
+							<div class="sort-handle">Filters</div>
+							<ul class="list-inline">
+								<li><a href="#" data-filter="*" class="active">Todo</a></li>
+								<li><a href="#" data-filter=".restaurant">Cafetería</a></li>
+								<li><a href="#" data-filter=".rooms">Habitaciones</a></li>
+								<li><a href="#" data-filter=".lobby">Instalaciones</a></li>
+							</ul>
+						</div>
+					</div>
+					<ul class="image-main-box clearfix">
+						<li class="item col-xs-6 col-md-4 restaurant">
+							<figure>
+								<img src="{% static 'img/galeria/coffee1.jpeg' %}" alt="11"/>
+								<a href="{% static 'img/galeria/coffee1.jpeg' %}" class="more-details"
+								   data-title="Great View">Enlarge</a>
+								<figcaption>
+									<h4>Cafetería</h4>
+								</figcaption>
+							</figure>
+						</li>
+
+						<li class="item col-xs-6 col-md-4 lobby">
+							<figure>
+								<img src="{% static 'img/galeria/lobby1.jpg' %}" alt="11"/>
+								<a href="{% static 'img/galeria/lobby1.jpg' %}" class="more-details"
+								   data-title="Instalaciones">Enlarge</a>
+								<figcaption>
+									<h4>Instalaciones</h4>
+								</figcaption>
+							</figure>
+						</li>
+						<li class="item col-xs-6 col-md-4 restaurant">
+							<figure>
+								<img src="{% static 'img/galeria/coffee2.jpeg' %}" alt="11"/>
+								<a href="{% static 'img/galeria/coffee2.jpeg' %}" class="more-details"
+								   data-title="Cafetería">Enlarge</a>
+								<figcaption>
+									<h4>Cafetería</h4>
+								</figcaption>
+							</figure>
+						</li>
+						<li class="item col-xs-6 col-md-4 restaurant">
+							<figure>
+								<img src="{% static 'img/galeria/simple.jpeg' %}" alt="11"/>
+								<a href="{% static 'img/galeria/simple.jpeg' %}" class="more-details"
+								   data-title="Cafetería">Enlarge</a>
+								<figcaption>
+									<h4>Cafetería</h4>
+								</figcaption>
+							</figure>
+						</li>
+						<li class="item col-xs-6 col-md-4 lobby">
+							<figure>
+								<img src="{% static 'img/galeria/lobby2.jpg' %}" alt="11"/>
+								<a href="{% static 'img/galeria/lobby2.jpg' %}" class="more-details"
+								   data-title="Instalaciones">Enlarge</a>
+								<figcaption>
+									<h4>Instalaciones</h4>
+								</figcaption>
+							</figure>
+						</li>
+						
+						<li class="item col-xs-6 col-md-4 rooms">
+							<figure>
+								<img src="{% static 'img/galeria/room1.jpg' %}" alt="11"/>
+								<a href="{% static 'img/galeria/room1.jpg' %}" class="more-details" data-title="Comfortable Rooms">Enlarge</a>
+								<figcaption>
+									<h4>Habitaciones</h4>
+								</figcaption>
+							</figure>
+						</li>
+
+					</ul>	
+					<a href="{% url 'galeria' %}" class="gallery-more-btn ravis-btn btn-type-2">Más ...</a>
+				</div>
+			</div>
+		</section>
+		<!-- End of Gallery -->
+
+			
+	{% endblock contenido4 %}
+
+
+
+
+	<!--Footer Section-->
+	{% block footer %}
+
+	<footer id="main-footer">
+		<div class="inner-container container">
+			<div class="t-sec clearfix">
+				<div class="widget-box col-sm-8 col-md-5">
+					<a href="#" id="t-logo">
+						<img align= "right" class="img-responsive" src="{% static 'img/logo/villo.png'%}">
+					</a>
+				
+					</div>
+					
+				
+					<div class="widget-box col-sm-7 col-md-4">
+						<h4 class="title">Contactos</h4>
+						<div class="widget-content contact">
+							<ul class="contact-info">
+								<li>
+									<i class="fa fa-home"></i>
+									Sucre 07-61 e/ 10 de Agosto y José A. Eguiguren
+								</li>
+								<li>
+									<i class="fa fa-phone"></i>
+									(072) 570-199
+									(072) 570-651
+								</li>
+								<li>
+									<i class="fa fa-envelope"></i>
+									hotelvillonacoloja@gmail.com
+								</li>
+							</ul>
+						</div>
+					</div>
+				<div class="widget-box col-sm-6 col-md-3">
+					<h4 class="title">Encuéntranos en:</h4>
+					<div class="widget-content contact">
+						<ul class="social-icons list-inline">
+							<li>
+							 	<a href="https://www.facebook.com/Hotel-Villonaco-Loja-1597341817147701/" target="_blank">
+								<i class="fa fa-facebook"></i>
+								</a>
+							</li>
+							<li>
+								<a href="https://twitter.com/Hotel_Villonaco" target="_blank">
+								<i class="fa fa-twitter"></i>
+								</a>
+							</li>
+							
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="b-sec clearfix">
+					<div class="contact-info">
+					 <li>
+						<i class="fa fa-envelope"></i>
+							lourdes.cueva96@gmail.com
+					</li>
+					
+				</div>
+			</div>
+		</footer>
+		
+	{% endblock footer %}
+	<!--End of Footer Section-->
+	</div>
+</body>
+{% endblock body %}
+
+
+	
+

@@ -1,0 +1,392 @@
+{% extends 'administration/base.html' %}
+{% load staticfiles %}
+{% block title %}
+Detalle Reserva
+{% endblock title%}
+{% block estilos%}
+
+{% endblock estilos%}
+
+{% block scripts %}
+    <script src="{% static 'admin/js/form.js' %}"></script>
+{% endblock scripts %}
+
+<body>
+<div class="wrapper">
+
+{% block contenido1 %}
+
+<script type="text/javascript">
+  
+        
+    function rescatarValores() {
+      
+      var result = [];
+      var tabla = document.getElementById("tabla");
+      var i = tabla.rows.length;
+
+      if(i == 0) {
+        for(var j = 0; j < i; j++) {
+          for(var k = 0; k < 5; k++) {
+            var data = [tabla.rows[j].cell[k].innerHTML];
+            result[j] = data;
+          }
+        }
+      } 
+
+      //var items = new array(tabla.rows.legth);
+      return result;
+    }
+
+    function buscarId(cant, desc, pu, pt) {
+      var tabla = document.getElementById("tablad");
+      var k = tabla.rows.length;
+      var cont = -1;      
+      for(var j = 1; j < k; j++) {
+        var pu1 = tabla.rows[j].cells[2].innerHTML.replace(",",".");;
+        var pt1 = tabla.rows[j].cells[3].innerHTML.replace(",",".");
+        if(cant == tabla.rows[j].cells[0].innerHTML &&
+          desc == tabla.rows[j].cells[1].innerHTML &&
+          pu == pu1 &&
+          pt == pt1 ) {
+          cont++;
+            break;
+          //alert(tabla1.rows[j].cells[3].innerHTML);
+              //tabla1.rows[j].cell[0].innerHTML = ((j*1)+1);
+        }
+        cont++;
+      }
+      return cont;
+    }
+
+    function quitarFila(cant, desc, pu, pt) {
+      
+      var tabla = document.getElementById("tablad");
+      var i = buscarId(cant, desc, pu, pt);
+      
+      //document.getElementsByTagName("table")[0].setAttribute("id", "tableid");
+      var k = tabla.rows.length;
+      if(i == 0) {
+        i=0;
+      }
+      tabla.deleteRow((i*1)+1);
+      /*var tabla1 = document.getElementById("tablad");
+      var k1 = tabla1.rows.length;
+      if(k1 == 1) {
+
+      }*/
+      //alert("Se abrego");
+      //var tabla1 = document.getElementById("tablad");
+      
+       
+    }
+    function agregarItem(adulto, nino, tipo, precio, dias, cant, precio_total, id_habitacion, nroHab, nrofila) {
+      
+      var tabla = document.getElementById("tabla");
+      //var nrorooms = 1;//$("#nro").val();
+      
+      
+      //var aux = auxTipo.split(" - ");
+      //var tipo = aux[0];
+      //alert(nino + " " + adulto + " " + tipo + " " + precio);
+      var precio = precio.replace(",",".");
+      var precio_total = precio_total.replace(",",".");
+      var texto1 = "";
+
+      if(tabla.rows.length == 0) {
+        var fila = "<tr><th>Nro</th>"+"<th>Tipo de habitacion</th>"+"<th>Adultos</th>"+"<th>Niños</th>"+"<th>Precio</th></tr>";     
+        var btn = document.createElement("tr");     
+        btn.innerHTML = fila;
+        tabla.appendChild(btn);
+      }else{
+
+        var fila = "<tr><th>"+cant+"</th>"+"<td>"+" Habitacion "+tipo +"  "+ nroHab+" Adultos: "+ adulto+" Niños: "+nino+"</td>"+"<td>"+precio+"</td>"+"<td>"+precio_total+"</td>"+"<td></td>"+"</tr>";
+        
+        
+        var btn = document.createElement("tr");
+        texto1 =  cant + ":" +tipo + ":" + adulto + ":" + nino + ":" +precio + ":" +precio_total + ":" + id_habitacion +";";
+        btn.innerHTML = fila;
+        tabla.appendChild(btn);
+        quitarFila(cant, tipo, precio, precio_total);
+
+
+        var total = document.getElementById("total");
+      var subtotal = document.getElementById("subtotal");
+      var iva = document.getElementById("iva");
+
+      var totalA = total.innerHTML;
+      totalA = (totalA*1)+(precio_total*1);      
+      total.innerHTML = totalA.toFixed(2);
+      
+      
+
+      var subtotalA = 0;
+      subtotalA = ((total.innerHTML*1)/1.12);      
+      subtotal.innerHTML = subtotalA.toFixed(2);
+
+      var ivaA = 0;
+      ivaA = (total.innerHTML*1)-(subtotal.innerHTML*1);      
+      iva.innerHTML = ivaA.toFixed(2);
+
+        var datas = document.getElementById("datas");
+        datas.value = datas.value + texto1;
+       
+
+        var subtotalH = document.getElementById("subtotalT");
+        subtotalH.value = subtotal.innerHTML;
+        var ivaH = document.getElementById("ivaT");
+        ivaH.value = iva.innerHTML;
+        var totalH = document.getElementById("totalT");
+        totalH.value = total.innerHTML;
+        $('#boton').removeAttr('disabled');
+      }
+
+      
+
+      //var diasid = document.getElementById("duracion");
+      //var dias = diasid.value;
+      
+      //for(var i = 1; i < nino.length; i++) {
+        //alert(nino[i].value);
+        
+      //}
+
+      /*var idreserva = document.getElementById("idreserva"); 
+      idreserva.value = (texto1);
+      var total = document.getElementById("total");
+      var totalA = total.innerHTML;
+      totalA = (totalA*1)+valorTotal;
+      total.innerHTML = totalA.toFixed(2);
+      var totalS = document.getElementById("total1");
+      totalS.innerHTML = "$";
+      var idtotal = document.getElementById("idtotal");
+      idtotal.value = totalA.toFixed(2);
+      //$('#nro > option[value=""]').attr('selected', 'selected');
+      $('#boton').removeAttr('disabled');
+      */
+    }
+  
+</script>
+
+<div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+
+<form class="well form-horizontal" action=" {% url 'registrar_factura'%}" method="post"  id="contact_form">
+{% csrf_token %} 
+<fieldset>
+
+<!-- Form Name -->
+<legend>Detalle Reserva</legend>
+
+<!-- Text input-->
+  
+    <div class="col-md-4 ">
+      <label >Cédula</label>
+        <div class="input-group">
+        <span class="input-group-addon"><i class="fa fa-id-card"></i></span>
+        <input name="cedula" value="{{ persona.cedula }}" readonly="true" class="form-control"  type="text">
+        </div>
+    </div>
+
+    <div class="col-md-6 ">
+      <label>Nombres Completos</label>  
+      <div class="input-group">
+      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+      <input  name="nombres" value="{{ persona.nombre }}" readonly="true" class="form-control"  type="text">
+    </div>
+  </div>
+
+    
+  <div class="col-md-4 " >
+  <label>Dirección</label>  
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+        <input name="direccion" value="{{ persona.direccion }}" readonly="true" class="form-control" type="text">
+    </div>
+  </div>
+
+<div class="form-group">
+<div class="col-md-4">
+  <label>Télefono</label>  
+        <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+  <input name="telefono" value="{{ persona.telefono }}" readonly="true" class="form-control"  type="tel">
+    </div>
+  </div>
+  </div>
+<div class="content table-responsive table-full-width">
+                                <table class="table table-hover table-striped" id="tablad">
+                                    <thead>
+                                    
+                                      <th>Cantidad</th>
+                                      <th>Descripción</th>
+                                      <th>P/Uni</th>
+                                      <th>P/Total</th>
+                                      <th>Hab. Disponibles</th>
+                                      <th>Acción</th>
+
+                                        <!-- <th>Estado</th>
+                                        <th>Abono</th> -->
+                                    </thead>
+                                    <tbody>
+                                    {% for objeto in listadetalle %}
+                                        <tr>
+                                        
+                                          <td>{{objeto.cantidad}}</td>
+                                          <input type="hidden" id="{{objeto.id_detallereserva}}_h" value="{{objeto.cantidad}}:{{objeto.descripcion}}:{{objeto.precio_uni}}:{{objeto.precio_total}}:{{objeto.cant_adultos}}:{{objeto.cant_ninos}}">
+                                          
+                                          <td>{{objeto.descripcion}}</td>
+                                          <td>{{objeto.precio_uni}}</td>
+
+                                          <td>{{objeto.precio_total}}</td>
+                                            <!-- <td>{{objeto.estado}}</td>
+                                            <td>{{objeto.abono}}</td> -->
+                                            
+                                            <td>
+                                              {% if objeto.descripcion  == "Simple" %}
+                                                <select id="tipoS{{obj.id_habitacion}}">
+                                                  {% for obj in simple%}
+                                                  <option value="{{obj.id_habitacion}}">{{obj.numero_habitacion}}</option>
+                                                  {% endfor %}
+                                                </select>
+                                              {% endif %}
+                                              {% if objeto.descripcion  == "Doble" %}
+                                                <select id="tipoD{{obj.id_habitacion}}">
+                                                  {% for obj in doble%}
+                                                  <option value="{{obj.id_habitacion}}">{{obj.numero_habitacion}}</option>
+                                                  {% endfor %}
+                                                </select>
+                                              {% endif %}
+                                              {% if objeto.descripcion  == "Triple" %}
+                                                <select id="tipoT{{obj.id_habitacion}}">
+                                                  {% for obj in triple%}
+                                                  <option value="{{obj.id_habitacion}}">{{obj.numero_habitacion}}</option>
+                                                  {% endfor %}
+                                                </select>
+                                              {% endif %}
+                                            </td>
+                                            <td>
+                                            <a id="id_{{objeto.id_detallereserva}}" href="#">Agregar</a>
+                                            </td>
+                                            </tr>
+                                             
+
+
+<script type="text/javascript">
+ 
+                      $("#id_{{objeto.id_detallereserva}}").click(function(){
+                        
+                        var datito = $("#{{objeto.id_detallereserva}}_h").val();
+
+                        var aux = datito.split(":");
+                        //alert(aux[0]);
+                        /*{{objeto.cantidad}}:
+                        {{objeto.descripcion}}:
+                        {{objeto.precio_uni}}:
+                        {{objeto.precio_total}}:
+                        {{objeto.cant_adultos}}:
+                        {{objeto.cant_ninos}}*/
+                        var idhab = 0;
+                        var nro = "";
+                        if(aux[1] == "Simple") {
+                          idhab =  $("#tipoS{{obj.id_habitacion}}").val();
+                          nro = $('#tipoS{{obj.id_habitacion}} option:selected').text();
+                        }
+                        if(aux[1] == "Doble") {
+                          idhab =  $("#tipoD{{obj.id_habitacion}}").val();
+                          nro = $('#tipoD{{obj.id_habitacion}} option:selected').text();
+                        }
+                        if(aux[1] == "Triple") {
+                          idhab =  $("#tipoT{{obj.id_habitacion}}").val();
+                          nro = $('#tipoT{{obj.id_habitacion}} option:selected').text();
+                        }
+                        
+                        agregarItem(aux[4], aux[5], aux[1], aux[2], "{{reserva.dias}}", aux[0], aux[3], idhab, nro, "{{ forloop.counter }}");
+                        //var arreglo = rescatarValores();
+                        
+                        //var nino = $("#nino_{{obj.0.id_tipohabitacion}}").val();
+                        //var adulto = $("#adult_{{obj.0.id_tipohabitacion}}").val();
+                        //var tipo = "{{obj.0.nombre_tipo}}";
+                        //var precio = "{{obj.0.precio_tipo}}";
+                        //var nro = "{{obj.0.nro_personas}}";
+                       // agregarItem(adulto, nino, tipo, precio, nro);
+                        
+                        
+                        //var nrototal = document.getElementById("cant_{{obj.0.id_tipohabitacion}}").innerHTML;
+                        //nrototal = (nrototal*1)-1;
+                        //var nrototalAux = document.getElementById("cant_{{obj.0.id_tipohabitacion}}");
+                        //nrototalAux.innerHTML = nrototal;
+                        //if(nrototal <= 0) {
+                          
+                         // $('#agregar_{{obj.0.id_tipohabitacion}}').hide();
+                       // }
+                        //alert(nrototal);
+                      });
+
+                    
+                  </script>
+
+                                            <!--<a a title="Dar de Baja" href="#"> <span class="glyphicon glyphicon-remove"></span></a>  -->  
+                                            </td>
+                                        
+                                        </tr>
+                                    {% endfor %}
+                                       
+                                    </tbody>
+                                </table>
+                                <table class="table table-hover table-striped" id="tabla">
+                                    <thead>
+                                      <th>Cantidad</th>
+                                      <th>Descripción</th>
+                                      <th>P/Uni</th>
+                                      <th>P/Total</th>
+                                      <th>Acción</th>
+                                        <!-- <th>Estado</th>
+                                        <th>Abono</th> -->
+                                    </thead>
+                                    <tbody>
+                                    
+                                       
+                                    </tbody>
+                                </table>
+                                <div style="text-align: center;">
+                                Subtotal: $  
+            <label id="subtotal" style="text-align: right;">0</label>
+              <input type="hidden" name="subtotal" id="subtotalT" />
+          </div>
+          <div style="text-align: center;">
+            IVA: $ 
+            <label id="iva" style="text-align: center;">0</label>
+              <input type="hidden" name="iva" id="ivaT" />
+          </div>
+          <div style="text-align: center;">
+          <input type="hidden" name="total" id="totalT" />
+          <input type="hidden" name="idreserva" value="{{reserva.id_reserva}}" />
+            Total: $
+            <label id="total" style="text-align: center;">0</label>  
+          </div>
+                            </div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label"></label>
+  <div class="col-md-4">
+    <button type="submit" id="boton" disabled="true" class="btn btn-warning" >Guardar <span class="glyphicon glyphicon-floppy-disk"></span></button>
+  </div>
+</div>
+<input type="hidden" name="datas" id="datas" />
+
+</fieldset>
+</form>
+</div>
+</div>
+  {% endblock contenido1 %}
+
+</div>
+</div>
+
+</div>
+
+
+</body>

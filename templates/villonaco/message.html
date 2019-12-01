@@ -1,0 +1,93 @@
+{% extends 'villonaco/base.html' %}
+{% load staticfiles %}
+{% block title %}
+Reservaciones
+{% endblock title%}
+{% block estilos %}
+{% endblock estilos %}
+{% block scripts %}
+{% endblock scripts %}
+
+
+{% block body %}
+<body class="booking">
+	<div class="main-wrapper">
+		<!-- Header Section -->
+		{% block header %}
+		<header id="main-header">
+			<div class="inner-container container">
+				<div class="l-sec col-xs-8 col-sm-6 col-md-3">
+					<a href="#" id="t-logo">
+						<img align= "right" class="img-responsive" src="{% static 'img/logo/villo2.png'%}">
+					</a>
+				</div>
+				<div class="r-sec col-xs-4 col-sm-6 col-md-9">
+					<nav id="main-menu">
+						<ul class="list-inline">
+							<li class="active"><a href="/">Inicio</a> </li>
+							<li><a href="{% url 'quienes_somos' %}">Quiénes Somos</a> </li>
+							<li><a href="{% url 'habitaciones' %}">Habitaciones</a> </li>
+							<li><a href="{% url 'galeria' %}">Galería</a> </li>
+							<li ><a href="{% url 'contactos' %}">Contactos</a></li>	
+						</ul>
+					</nav>
+					<div id="main-menu-handle" class="ravis-btn btn-type-2"><i class="fa fa-bars"></i><i class="fa fa-close"></i></div><!-- Mobile Menu handle -->
+					{% if user.is_authenticated %}
+					<a href="/accounts/logout" id="header-book-bow" class="ravis-btn btn-type-2">
+					<i class="glyphicon glyphicon-log-out"></i>
+					<span>Cerrar Sesion</span> 
+					</a>
+					{% else %}
+					<a href="{% url 'disponibilidad' %}" id="header-book-bow" class="ravis-btn btn-type-2">
+					<span>Iniciar Sesion</span> 
+					<i class="fa fa-calendar"></i>
+					</a>
+					{% endif %}
+				</div>
+			</div>
+			<div id="mobile-menu-container"></div>
+		</header>
+	{% endblock header %}
+	
+		<!-- End of Header Section -->
+	{% block contenido1 %}
+		<!--Breadcrumb Section-->
+		<section id="breadcrumb-reserva" data-bg-img="../assets/img/breadcrumb.jpg">
+			<div class="inner-container container">
+		
+				<div class="breadcrumb">
+					<ul class="list-inline">
+						<li><a href="/">Inicio</a></li>
+						<li class="current"><a href="#">Reservaciones</a></li>
+					</ul>
+				</div>
+			</div>
+		</section>
+		<!--End of Breadcrumb Section-->
+	{% endblock contenido1 %}
+	{% block contenido2 %}
+		<section id="booking-section" class="step-3">
+			<div class="inner-container container">
+				
+				<div class="col-md-12 r-sec">
+					<div class="inner-box">
+						<div id="confirmation-message">
+							<div class="ravis-title-t-2">
+								<div class="title"><span>Reservación Completa</span></div>
+								<div class="sub-title">El detalle de su reserva fue enviado a su correo </div>
+							</div>
+							<div class="desc">
+								Para más información<a href="{% url 'contactos' %}"> contáctenos</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</section>
+	{% endblock contenido2 %}
+
+
+	</div>
+</body>
+{% endblock body %}

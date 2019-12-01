@@ -1,0 +1,82 @@
+
+{% extends 'villonaco/base.html' %}
+{% load staticfiles %}
+{% block title %}
+Registrarse
+{% endblock title%}
+{% block estilos %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/styles-login.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/styles-light.css' %}">
+{% endblock estilos %}
+{% block scripts %}
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+  <script src="{% static 'js/index.js' %}"></script>  
+
+{% endblock scripts %}
+
+
+{% block body %}
+<body>
+<script src="{% static 'validacion/js/jquery-1.8.2.min.js' %}"></script>
+	<script src="{% static 'validacion/js/jquery.validationEngine.js' %}"></script>
+	<script src="{% static 'validacion/js/languages/jquery.validationEngine-es.js' %}"></script> 
+	 <link rel="stylesheet" type="text/css" href="{% static 'validacion/css/validationEngine.jquery.css' %}">
+	<script type="text/javascript">
+		var t = jQuery.noConflict();
+		t(document).ready(function(){
+
+			t("#id_username").addClass("validate[required,maxSize[25],minSize[3]]");
+			t("#id_cedula").addClass("validate[required,maxSize[13],minSize[10], validarCedula]");
+			t("span.helptext").hide();
+			t("#formID").validationEngine();	
+		});		
+		/**
+		*
+		* @param {jqObject} the field where the validation applies
+		* @param {Array[String]} validation rules for this field
+		* @param {int} rule index
+		* @param {Map} form options
+		* @return an error string if validation failed
+		*/
+		function checkHELLO(field, rules, i, options){
+			if (field.val() != "HELLO") {
+				// this allows to use i18 for the error msgs
+				return options.allrules.validate2fields.alertText;
+			}
+		}
+
+	</script>
+	<div class="logmod">
+  	 <div class="logmod__wrapper">
+	  <span class="logmod__close">Close</span>
+		<div class="logmod__container">
+		<h2 class="title">REGISTRATE</h2>
+		<div class="logmod__heading">
+		          <span class="logmod__heading-subtitle">Ingrese su datos personales<strong> para crear una cuenta</strong></span>
+		        </div>
+		          <div class="logmod__form">
+		            <div class="sminputs">
+		              <div class="input full">
+		                <form id="formID" method="POST" action="{% url 'registrarse' %}">
+		                  {% csrf_token %}
+		                  {{ form.as_p }} 
+		                  {{ formu.as_p }}
+		                  <input type="hidden" name="id_persona" value="0" />
+		                  <button type="submit"> guardar</button>
+		                  
+		                      <div class="simform__actions">
+		                      <span class="simform__actions-sidetext">Al crear una cuenta acepta nuestros <a class="special" href="#" target="_blank" role="link">Términos & Privacidad</a></span>
+		                    </div> 
+		                </form>
+		              </div>
+		            </div>
+		           
+		          </div>
+		       </div>
+		    </div>
+		  </div>
+	    </div>
+	</div>
+	
+ </body>
+ {% endblock body %}

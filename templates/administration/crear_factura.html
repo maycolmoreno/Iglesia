@@ -1,0 +1,171 @@
+{% extends 'administration/base.html' %}
+{% load staticfiles %}
+{% block title %}
+Factura
+{% endblock title%}
+{% block estilos%}
+
+{% endblock estilos%}
+
+{% block scripts %}
+    <script src="{% static 'admin/js/form.js' %}"></script>
+{% endblock scripts %}
+
+<body>
+<div class="wrapper">
+
+{% block contenido1 %}
+
+<div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+
+<form class="well form-horizontal" action=" " method="post"  id="contact_form">
+<fieldset>
+
+<!-- Form Name -->
+<legend>Factura</legend>
+
+<!-- Text input-->
+  
+    <div class="col-md-4 ">
+      <label >Cédula</label>
+        <div class="input-group">
+        <span class="input-group-addon"><i class="fa fa-id-card"></i></span>
+        <input name="cedula" placeholder="Cédula" class="form-control"  type="text">
+        </div>
+    </div>
+    <div class="col-md-4 ">
+      <label>Nombres Completos</label>  
+      <div class="input-group">
+      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+      <input  name="nombres" placeholder="Nombres" class="form-control"  type="text">
+    </div>
+  </div>
+  <div class="col-md-4 ">
+      <label>Factura #</label>  
+      <div class="input-group">
+      <span class="input-group-addon"><i class="glyphicon glyphicon-barcode"></i></span>
+      <input  name="nombres" placeholder="Nro. Factura" class="form-control"  type="text">
+    </div>
+  </div>
+    
+  <div class="col-md-4 " >
+  <label>Dirección</label>  
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+        <input name="direccion" placeholder="Dirección" class="form-control" type="text">
+    </div>
+  </div>
+
+<div class="form-group">
+<div class="col-md-4">
+  <label>Télefono</label>  
+        <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+  <input name="telefono" placeholder="Télefono" class="form-control"  type="tel">
+    </div>
+  </div>
+  </div>
+  <div class="content table-responsive table-full-width">
+                                <table class="table table-hover table-striped">
+                                    <thead>
+                                        <th>Cantidad</th>
+                                      <th>Descripción</th>
+                                      <th>P/Uni</th>
+                                      <th>P/Total</th>
+                                      <th>Accion</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                          <td>1</td>
+                                          <td>Simple</td>
+                                          <td>14,96</td>
+                                          <td>44,88</td>
+                                          <td><a a title="Editar"  href="#"> <span class="glyphicon glyphicon-edit"></span></a>
+                                    <a a title="Dar de Baja" href="#"> <span class="glyphicon glyphicon-remove"></span></a></td>
+                                        </tr>
+                                        <tr>
+                                          <td>1</td>
+                                          <td>Doble</td>
+                                          <td>29,92</td>
+                                          <td>89,76</td>
+                                          <td><a a title="Editar"  href="#"> <span class="glyphicon glyphicon-edit"></span></a>
+                                    <a a title="Dar de Baja" href="#"> <span class="glyphicon glyphicon-remove"></span></a></td>
+                                        </tr>
+                                        <tr>
+                                          <td></td>
+                                          <td></td>
+                                          <td></td>
+                                          <td></td>
+                                          <td></td>
+                                        </tr>
+                                        <tr>
+                                          <td></td>
+                                          <td></td>
+                                          <td></td>
+                                          <td></td>
+                                          <td></td>
+                                        </tr>
+                                        <tr>
+                                          <td></td>
+                                          <td></td>
+                                          <td></td>
+                                          <td></td>
+                                          <td></td>
+                                        </tr>
+                                        <tr>
+                                          <td></td>
+                                          <td></td>
+                                          <td>Subtotal</td>
+                                          <td>134,64</td>
+                                          <td></td>
+                                        </tr>
+                                        <tr>
+                                          <td></td>
+                                          <td></td>
+                                          <td>Descuento</td>
+                                          <td>0,00</td>
+                                          <td></td>
+                                        </tr>
+                                        <tr>
+                                          <td></td>
+                                          <td></td>
+                                          <td>Iva 12%</td>
+                                          <td>18,36</td>
+                                          <td></td>
+                                        </tr>
+                                        <tr>
+                                          <td></td>
+                                          <td></td>
+                                          <td>Total</td>
+                                          <td>153,00</td>
+                                          <td></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+
+                        
+
+<div class="form-group">
+  <label class="col-md-4 control-label"></label>
+  <div class="col-md-4">
+    <button type="submit" class="btn btn-warning" >Guardar <span class="glyphicon glyphicon-floppy-disk"></span></button>
+  </div>
+</div>
+
+
+</fieldset>
+</form>
+</div>
+</div>
+  {% endblock contenido1 %}
+
+</div>
+</div>
+
+</div>
+</body>

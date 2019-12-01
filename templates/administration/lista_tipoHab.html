@@ -1,0 +1,64 @@
+{% extends 'administration/base.html' %}
+{% load staticfiles %}
+{% block title %}
+Tipo de Habitaciones
+{% endblock title%}
+{% block scripts %}
+    
+
+{% endblock scripts %}
+
+<body>
+<div class="wrapper">
+   {% block contenido1 %}
+
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title">Tipo de Habitaciones</h4>
+                                <a href="{% url 'crear_tipohabitacion' %}" id="header-admin" class="ravis-btn btn-type-2">NUEVA</a>
+                            </div>
+                            <div class="content table-responsive table-full-width">
+                                <table class="table table-hover table-striped" id="myTable">
+                                    <thead>
+                                        <th>ID</th>
+                                    	<th>Nombre de Tipo</th>
+                                    	<th>Precio</th>
+                                    	<th>Nro Personas</th>
+                                        <th>Acción</th>
+                                    </thead>
+                                    <tbody>
+                                    {% for objeto in listaTipo %}
+                                        <tr>
+                                            <td>{{objeto.id_tipohabitacion}}</td>
+                                        	<td>{{objeto.nombre_tipo}}</td>
+                                        	<td>{{objeto.precio_tipo}}</td>
+                                        	<td>{{objeto.nro_personas}}</td>
+                                            <td>
+                                              <a a title="Editar"  href="{% url 'obtener_tipohabitacion' pk=objeto.id_tipohabitacion %}"> <span class="glyphicon glyphicon-edit"></span></a>
+                                              <a a title="Dar de Baja" href="#"> <span class="glyphicon glyphicon-remove"></span></a>    
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                       
+                                    </tbody>
+                                </table>
+
+                            </div>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#myTable').DataTable();
+    });
+</script>
+                        </div>
+                    </div>
+    {% endblock contenido1 %}
+
+    </div>
+</div>
+</body>
+
+

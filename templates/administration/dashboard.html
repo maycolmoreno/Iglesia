@@ -1,0 +1,49 @@
+{% extends 'administration/base.html' %}
+{% load staticfiles %}
+{% block title %}
+Administración
+{% endblock title%}
+{% block scripts %}
+<script type="text/javascript">
+        $(document).ready(function(){
+
+            demo.initChartist();
+
+            $.notify({
+                icon: 'pe-7s-graph3',
+                message: "Bienvenido al <b>Panel de administración</b> del Hotel Villonaco"
+
+            },{
+                type: 'info',
+                timer: 4000
+            });
+
+        });
+    </script>
+
+
+{% endblock scripts %}
+
+
+    {% block contenido1 %}
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+    
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="header">
+                                <h1 class="title_welcome_admin">Bienvenido</h1>
+                                <h1 class="title_user">{{request.user.username|capfirst}}</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    {% endblock contenido1 %}
+
+
+
+

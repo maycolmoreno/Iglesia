@@ -1,0 +1,386 @@
+{% extends 'villonaco/base.html' %}
+{% load staticfiles %}
+{% block title %}
+Detalle Habitación
+{% endblock title%}
+{% block scripts %}
+{% endblock scripts %}
+
+{% block body %}
+<body class="room-detials">
+	<div class="main-wrapper">
+		<!-- Header Section -->
+
+	{% block header %}
+		<header id="main-header">
+			<div class="inner-container container">
+				<div class="l-sec col-xs-8 col-sm-6 col-md-3">
+					<a href="#" id="t-logo">
+						<img align= "right" class="img-responsive" src="{% static 'img/logo/villo2.png'%}">
+					</a>
+				</div>
+				<div class="r-sec col-xs-4 col-sm-6 col-md-9">
+					<nav id="main-menu">
+						<ul class="list-inline">
+							<li><a href="/">Inicio</a> </li>
+							<li><a href="{% url 'quienes_somos' %}">Quiénes Somos</a> </li>
+							<li class="active"><a href="{% url 'habitaciones' %}">Habitaciones</a> </li>
+							<li><a href="{% url 'galeria' %}">Galería</a> </li>
+							<li ><a href="{% url 'contactos' %}">Contactos</a></li>	
+						</ul>
+					</nav>
+					<div id="main-menu-handle" class="ravis-btn btn-type-2"><i class="fa fa-bars"></i><i class="fa fa-close"></i></div><!-- Mobile Menu handle -->
+					{% if user.is_authenticated %}
+					<a href="/accounts/logout" id="header-book-bow" class="ravis-btn btn-type-2">
+					<i class="glyphicon glyphicon-log-out"></i>
+					<span>Cerrar Sesion</span> 
+					</a>
+					{% else %}
+					<a href="{% url 'disponibilidad' %}" id="header-book-bow" class="ravis-btn btn-type-2">
+					<span>Iniciar Sesion</span> 
+					<i class="fa fa-calendar"></i>
+					</a>
+					{% endif %}
+				</div>
+			</div>
+			<div id="mobile-menu-container"></div>
+		</header>
+	{% endblock header %}
+	
+	{% block contenido1 %}
+		<section id="room-top-section">
+			<!-- Event Slider -->
+			<section id="room-slider">
+				<div class="items">
+					<div class="img-container" data-bg-img="../assets/img/slider/room/1.jpg"></div>
+				</div>
+				<div class="items">
+					<div class="img-container" data-bg-img="../assets/img/slider/room/3.jpg"></div>
+				</div>
+				<div class="items">
+					<div class="img-container" data-bg-img="../assets/img/slider/room/2.jpg"></div>
+				</div>
+				<div class="items">
+					<div class="img-container" data-bg-img="../assets/img/slider/room/4.jpg"></div>
+				</div>
+			</section>
+			<!-- End of Event Slider -->
+			<div class="inner-container container">
+				<div class="room-title-box">
+					<h1 class="title">Deluxe Two-bedroom Suite</h1>
+					<div class="price">
+						<div class="title">Starting from :</div>
+						<div class="value">$350</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		{% endblock contenido1 %}
+
+		{% block contenido2 %}
+
+		<section class="room-desc">
+			<div class="inner-container container">
+				<div class="l-sec col-md-8">
+					<div class="amenities">
+						<ul class="list-inline clearfix">
+							<li class="col-md-6">
+								<div class="title">Breakfast :</div>
+								<div class="value">Included</div>
+							</li>
+							<li class="col-md-6">
+								<div class="title">Room Size :</div>
+								<div class="value">60 sqm</div>
+							</li>
+							<li class="col-md-6">
+								<div class="title">Max People :</div>
+								<div class="value">3</div>
+							</li>
+							<li class="col-md-6">
+								<div class="title">View :</div>
+								<div class="value">Sea</div>
+							</li>
+							<li class="col-md-12">
+								<div class="title">Facilities :</div>
+								<div class="value">Free Wifi, Free Mini Bar, Room Security</div>
+							</li>
+						</ul>
+					</div>
+					<div class="icons-container">
+						<ul class="list-inline">
+							<li><i class="ravis-icon-hotel-tv"></i></li>
+							<li><i class="ravis-icon-towel-on-hanger"></i></li>
+							<li><i class="ravis-icon-swimming-pool-sign"></i></li>
+							<li><i class="ravis-icon-surveillance-camera"></i></li>
+							<li><i class="ravis-icon-hotel-left-luggage"></i></li>
+							<li><i class="ravis-icon-hair-dryer"></i></li>
+							<li><i class="ravis-icon-fast-food-burger-and-drink"></i></li>
+						</ul>
+					</div>
+					<div class="description">
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio error ex explicabo
+							fugiat libero, maxime molestias nostrum odit, officia quia recusandae, soluta velit! Ab
+							aspernatur cupiditate doloremque, in iusto optio ratione rerum soluta. Atque culpa ea eaque
+							eligendi expedita necessitatibus repellat sed tempore veniam voluptatum! Assumenda cum eius
+							exercitationem expedita facere iusto laudantium necessitatibus nisi odit officiis quam quod
+							rem reprehenderit sint tenetur vitae, voluptatibus. Amet atque commodi consectetur
+							consequatur dicta dolor doloremque enim eum expedita, harum illo illum iure iusto mollitia
+							nam nisi nobis omnis perferendis possimus sequi veniam vitae voluptas. Accusantium animi
+							consectetur delectus sunt totam veniam voluptate.
+						</p>
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus ad aliquam aliquid
+							asperiores atque consequuntur illum ipsum, iusto laudantium molestias non optio quas quasi
+							quo tempora, unde vitae voluptate voluptatum!
+						</p>
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam nam quaerat rerum veritatis.
+							Consequatur cupiditate earum explicabo id illum magni, minima quae quam voluptate? Adipisci
+							alias deserunt error expedita facilis fuga ipsa libero magnam minus mollitia natus, nulla,
+							numquam odio quae repellendus sapiente totam ut velit? Aut, consequuntur ducimus enim
+							eveniet, ipsum maxime praesentium quia quos soluta velit vero vitae.
+						</p>
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus itaque qui quisquam
+							voluptatum? Aliquid aperiam blanditiis consequatur dolorum facilis maiores placeat, sint
+							tempora tempore. Atque deserunt doloremque optio suscipit voluptatum!
+						</p>
+					</div>
+				</div>
+				<div class="r-sec col-md-4">
+
+					<form id="room-booking-form" action="#"><!-- Do Not remove the classes -->
+						<div class="input-daterange">
+							<div class="field-row">
+								<input placeholder="Check in" class="datepicker-fields check-in" type="text"
+									   name="start"/>
+								<!-- Date Picker field ( Do Not remove the "datepicker-fields" class ) -->
+								<i class="fa fa-calendar"></i><!-- Date Picker Icon -->
+							</div>
+							<div class="field-row">
+								<input placeholder="Check out" class="datepicker-fields check-out" type="text"
+									   name="end"/>
+								<i class="fa fa-calendar"></i>
+							</div>
+						</div>
+						<div class="field-row">
+							<!-- Select boxes ( you can change the items and its value based on your project's needs ) -->
+							<select name="room-type">
+								<option value="">Adult</option>
+								<!-- Select box items ( you can change the items and its value based on your project's needs ) -->
+								<option value="2">1</option>
+								<option value="3">2</option>
+								<option value="4">3</option>
+								<option value="5">4</option>
+								<option value="6">5</option>
+							</select>
+							<!-- End of Select boxes -->
+						</div>
+						<div class="field-row">
+							<select name="guest">
+								<option value="">Child</option>
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+							</select>
+						</div>
+						<div class="field-row">
+							<input type="submit" value="Book Now">
+						</div>
+					</form>
+
+					<div class="room-rating">
+						<div class="ravis-title-t-2">
+							<div class="title"><span>Room Rating</span></div>
+							<div class="sub-title">Our guests rate this room as below</div>
+						</div>
+
+						<div class="rate-box-container">
+							<div class="rate-box">
+								<div class="title">Overall</div>
+								<div class="progress">
+									<div class="progress-bar" role="progressbar" aria-valuenow="88" aria-valuemin="0"
+										 aria-valuemax="100" style="width: 88%"><span>88%</span></div>
+								</div>
+							</div>
+							<div class="rate-box">
+								<div class="title">Cleanliness</div>
+								<div class="progress">
+									<div class="progress-bar" role="progressbar" aria-valuenow="95" aria-valuemin="0"
+										 aria-valuemax="100" style="width: 95%"><span>95%</span></div>
+								</div>
+							</div>
+							<div class="rate-box">
+								<div class="title">Value</div>
+								<div class="progress">
+									<div class="progress-bar" role="progressbar" aria-valuenow="78" aria-valuemin="0"
+										 aria-valuemax="100" style="width: 78%"><span>78%</span></div>
+								</div>
+							</div>
+							<div class="rate-box">
+								<div class="title">View</div>
+								<div class="progress">
+									<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0"
+										 aria-valuemax="100" style="width: 60%"><span>60%</span></div>
+								</div>
+							</div>
+							<div class="rate-box">
+								<div class="title">Services</div>
+								<div class="progress">
+									<div class="progress-bar" role="progressbar" aria-valuenow="97" aria-valuemin="0"
+										 aria-valuemax="100" style="width: 97%"><span>97%</span></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</section>
+
+		{% endblock contenido2 %}
+
+		{% block contenido3 %}
+
+		<!--Other Rooms Section-->
+		<section id="other-rooms">
+			<div class="inner-container container">
+				<div class="ravis-title">
+					<div class="inner-box">
+						<div class="title">Other Rooms</div>
+						<div class="sub-title">List of other rooms that you might be interested</div>
+					</div>
+				</div>
+				<div class="room-container clearfix">
+					<div class="room-box col-xs-6 col-md-4 animated-box" data-animation="fadeInUp">
+						<div class="inner-box" data-bg-img="../assets/img/gallery/1.jpg">
+							<a href="room-details.html" class="more-info"></a>
+							<div class="caption">
+								<div class="title">Simple</div>
+								<div class="price">
+									<div class="title">Starting from :</div>
+									<div class="value">$17</div>
+								</div>
+								<div class="desc">
+									<div class="inner-box">
+										Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta, quia?
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+					<div class="room-box col-xs-6 col-md-4 animated-box" data-animation="fadeInUp" data-delay="300">
+						<div class="inner-box" data-bg-img="../assets/img/gallery/2.jpg">
+							<a href="room-details.html" class="more-info"></a>
+							<div class="caption">
+								<div class="title">Doble o Matrimonial</div>
+								<div class="price">
+									<div class="title">Starting from :</div>
+									<div class="value">$34</div>
+								</div>
+								<div class="desc">
+									<div class="inner-box">
+										Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta, quia?
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+					<div class="room-box col-xs-offset-3 col-xs-6 col-md-offset-0 col-md-4 animated-box" data-animation="fadeInUp" data-delay="600">
+						<div class="inner-box" data-bg-img="../assets/img/gallery/3.jpg">
+							<a href="room-details.html" class="more-info"></a>
+							<div class="caption">
+								<div class="title">Triple</div>
+								<div class="price">
+									<div class="title">Starting from :</div>
+									<div class="value">$51</div>
+								</div>
+								<div class="desc">
+									<div class="inner-box">
+										Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta, quia?
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!--End of Other Rooms Section-->
+
+		{% endblock contenido3 %}
+<!--Footer Section-->
+	{% block footer %}
+
+	<footer id="main-footer">
+		<div class="inner-container container">
+			<div class="t-sec clearfix">
+				<div class="widget-box col-sm-8 col-md-5">
+					<a href="#" id="t-logo">
+						<img align= "right" class="img-responsive" src="{% static 'img/logo/villo.png'%}">
+					</a>
+				
+					</div>
+					
+				
+					<div class="widget-box col-sm-7 col-md-4">
+						<h4 class="title">Contactos</h4>
+						<div class="widget-content contact">
+							<ul class="contact-info">
+								<li>
+									<i class="fa fa-home"></i>
+									Sucre 07-61 e/ 10 de Agosto y José A. Eguiguren
+								</li>
+								<li>
+									<i class="fa fa-phone"></i>
+									(072) 570-199
+									(072) 570-651
+								</li>
+								<li>
+									<i class="fa fa-envelope"></i>
+									hotelvillonacoloja@gmail.com
+								</li>
+							</ul>
+						</div>
+					</div>
+				<div class="widget-box col-sm-6 col-md-3">
+					<h4 class="title">Encuéntranos en:</h4>
+					<div class="widget-content contact">
+						<ul class="social-icons list-inline">
+							<li>
+							 	<a href="https://www.facebook.com/Hotel-Villonaco-Loja-1597341817147701/" target="_blank">
+								<i class="fa fa-facebook"></i>
+								</a>
+							</li>
+							<li>
+								<a href="https://twitter.com/Hotel_Villonaco" target="_blank">
+								<i class="fa fa-twitter"></i>
+								</a>
+							</li>
+							
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="b-sec clearfix">
+					<div class="copy-right">
+						<!-- With <i class="fa fa-heart"></i> by <a href="http://ravistheme.com"
+															   target="_blank">RavisTheme</a> © 2016. All Rights
+						Reserved. -->
+					</div>
+					
+				</div>
+			</div>
+		</footer>
+		
+	{% endblock footer %}
+	<!--End of Footer Section-->
+
+{% endblock body %}
