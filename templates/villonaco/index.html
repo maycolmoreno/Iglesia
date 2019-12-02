@@ -17,15 +17,15 @@ Inicio
 			<div class="inner-container container">
 				<div class="l-sec col-xs-8 col-sm-6 col-md-3">
 					<a href="#" id="t-logo">
-						<img align= "right" class="img-responsive" src="{% static 'img/logo/villo2.png'%}">
+						<img align= "right" class="img-responsive" src="{% static 'img/logo/logo.jpeg'%}">
 					</a>
 				</div>
 				<div class="r-sec col-xs-4 col-sm-6 col-md-9">
 					<nav id="main-menu">
 						<ul class="list-inline">
 							<li class="active"><a href="/">Inicio</a> </li>
-							<li><a href="{% url 'quienes_somos' %}">Quiénes Somos</a> </li>
-							<li><a href="{% url 'habitaciones' %}">Habitaciones</a> </li>
+							<li><a href="{% url 'quienes_somos' %}">Eventos</a> </li>
+							<li><a href="{% url 'habitaciones' %}">Agendas</a> </li>
 							<li><a href="{% url 'galeria' %}">Galería</a> </li>
 							<li ><a href="{% url 'contactos' %}">Contactos</a></li>	
 						</ul>
@@ -56,17 +56,17 @@ Inicio
 			<section id="main-slider">
 
 				<div class="items">
-					<div class="img-container" data-bg-img="{% static 'img/slider/lobby.jpeg' %}"></div>
+					<div class="img-container" data-bg-img="{% static 'img/galeria/gal6.jpg' %}"></div>
 					
 					<div class="slide-caption">
 						<div class="inner-container clearfix">
-							<div class="up-sec">Hotel Villonaco</div>
-							<div class="down-sec">"Su hogar en Loja"</div>
+							<div class="up-sec">Iglesia Fuego Santo</div>
+							<div class="down-sec">"Iglesia Cristiana"</div>
 						</div>
 					</div>
 				</div>
 				<div class="items">
-					<div class="img-container" data-bg-img="{% static 'img/slider/villo.jpeg' %}"></div>
+					<div class="img-container" data-bg-img="{% static 'img/galeria/gal5.jpg' %}"></div>
 					<div class="slide-caption">
 						<div class="inner-container clearfix">
 							<div class="up-sec">La mejor atención </div>
@@ -75,7 +75,7 @@ Inicio
 					</div>
 				</div>
 				<div class="items">
-					<div class="img-container" data-bg-img="{% static 'img/slider/room.jpeg' %}"></div>
+					<div class="img-container" data-bg-img="{% static 'img/galeria/gal4.jpg' %}"></div>
 					<div class="slide-caption">
 						<div class="inner-container clearfix">
 							<div class="up-sec">Habitaciones</div>
@@ -84,7 +84,7 @@ Inicio
 					</div>
 				</div>
 				<div class="items">	
-					<div class="img-container" data-bg-img="{% static 'img/slider/cielo.jpg' %}"></div>
+					<div class="img-container" data-bg-img="{% static 'img/logo_fuego_santo.jpg' %}"></div>
 					<div class="slide-caption">
 						<div class="inner-container clearfix">
 							<div class="up-sec">Alojamiento</div>
@@ -101,7 +101,7 @@ Inicio
 
 	{% block contenido1 %}
 	<section id="main-availability-form">
-				<div class="inner-container container">
+				<!--<div class="inner-container container">
 					<div class="l-sec col-md-8">
 						<div class="ravis-title">
 							<div class="inner-box">
@@ -111,15 +111,16 @@ Inicio
 						</div>
 					</div>
 					<div class="r-sec col-md-4">
-						<form class="booking-form clearfix" action="{% url 'disponibilidad'%}"><!-- Do Not remove the classes -->
-							<div class="col-md-3">
+						<form class="booking-form clearfix" action="{% url 'disponibilidad'%}">  Do Not remove the classes -->
+						<!--	<div class="col-md-3">
 								<button type="submit" class="ravis-btn btn-type-1">
 									<span class="inner-box">
 										Reserva ahora
 									</span>
 								</button>
 							</div>
-						</form>
+						</form>-->
+						
 
 					</div>
 				</div>
@@ -132,20 +133,16 @@ Inicio
 				<div class="l-sec col-md-7">
 					<div class="ravis-title-t-1">
 				
-						<div class="title"><span>Hotel Villonaco</span></div>
-						<div class="sub-title">Tu segundo hogar en Loja</div>
+						<div class="title"><span>Iglesia Fuego Santo</span></div>
+						<!--<div class="sub-title">Tu segundo hogar en Loja</div>-->
 					</div>
 					<div class="content">
-						El Hotel Villonaco se encuentra en Loja. Ofrece aparcamiento privado gratuito y WiFi gratis en todas las instalaciones.
-
-						Algunas habitaciones tienen zona de estar, y todas están equipadas con TV de pantalla plana y baño privado con bañera o ducha.<br>
-
-						La recepción se encuentra las 24 horas.
+						Lorem Ipsum es simplemente un texto ficticio de la industria de impresión y composición tipográfica. Lorem Ipsum ha sido el texto ficticio estándar de la industria desde el año 1500, cuando una impresora desconocida tomó una galera de tipo y la mezcló para hacer un libro de muestras. Ha sobrevivido no solo cinco siglos, sino también el salto a la composición electrónica, permaneciendo esencialmente sin cambios. Se popularizó en la década de 1960 con el lanzamiento de las hojas de Letraset que contienen pasajes de Lorem Ipsum, y más recientemente con software de publicación de escritorio como Aldus PageMaker
 					</div>
 					<a href="{% url 'quienes_somos' %}" class="ravis-btn btn-type-2">Leer Más..</a>
 				</div>
 				<div class="r-sec col-md-5">
-					<img src="{% static 'img/hotel.jpeg' %}" alt="Hotel Villonaco">
+					<img src="{% static 'img/galeria/fundadores.jpg' %}" alt="Iglesia Fuego Santo">
 				</div>
 			</div>
 		</section>
@@ -157,30 +154,30 @@ Inicio
 		<!--Habitaciones-->
 		<section id="luxury-rooms" class="clearfix">
 			<div class="room-boxes col-sm-6 col-md-4">
-				<a href="{% url 'disponibilidad' %}" class="inner-container" data-bg="{% static 'img/habitaciones/index/simple.jpg' %}">
+				<a href="{% url 'disponibilidad' %}" class="inner-container" data-bg="{% static 'img/galeria/evn1.jpg' %}">
 					<span class="ravis-title">
 						<span class="inner-box">
-							<span class="title">Simple</span>
+							<span class="title">Eventos</span>
 							<span class="sub-title">Habitación de uso individual</span>
 						</span>
 					</span>
 				</a>
 			</div>
 			<div class="room-boxes col-sm-6 col-md-4">
-				<a href="{% url 'disponibilidad' %}" class="inner-container" data-bg="{% static 'img/habitaciones/index/doble.jpeg' %}">
+				<a href="{% url 'disponibilidad' %}" class="inner-container" data-bg="{% static 'img/galeria/gal1.jpeg' %}">
 					<span class="ravis-title">
 						<span class="inner-box">
-							<span class="title">Doble o Matrimonial</span>
+							<span class="title">Galeria</span>
 							<span class="sub-title">Habitación ideal para parejas</span>
 						</span>
 					</span>
 				</a>
 			</div>
 			<div class="room-boxes col-sm-12 col-md-4">
-				<a href="{% url 'disponibilidad' %}" class="inner-container" data-bg="{% static 'img/habitaciones/index/triple.jpg' %}">
+				<a href="{% url 'disponibilidad' %}" class="inner-container" data-bg="{% static 'img/galeria/evn3.jpg' %}">
 					<span class="ravis-title">
 						<span class="inner-box">
-							<span class="title">Triple</span>
+							<span class="title">Eventos</span>
 							<span class="sub-title">Habitación para familias pequeñas</span>
 						</span>
 					</span>
@@ -211,48 +208,48 @@ Inicio
 							<div class="sort-handle">Filters</div>
 							<ul class="list-inline">
 								<li><a href="#" data-filter="*" class="active">Todo</a></li>
-								<li><a href="#" data-filter=".restaurant">Cafetería</a></li>
-								<li><a href="#" data-filter=".rooms">Habitaciones</a></li>
-								<li><a href="#" data-filter=".lobby">Instalaciones</a></li>
+								<li><a href="#" data-filter=".restaurant">Galeria</a></li>
+								<li><a href="#" data-filter=".rooms">Eventos</a></li>
+								<li><a href="#" data-filter=".lobby">Historias</a></li>
 							</ul>
 						</div>
 					</div>
 					<ul class="image-main-box clearfix">
 						<li class="item col-xs-6 col-md-4 restaurant">
 							<figure>
-								<img src="{% static 'img/galeria/coffee1.jpeg' %}" alt="11"/>
-								<a href="{% static 'img/galeria/coffee1.jpeg' %}" class="more-details"
+								<img src="{% static 'img/galeria/evn1.jpg' %}" alt="11"/>
+								<a href="{% static 'img/galeria/evn1.jpg' %}" class="more-details"
 								   data-title="Great View">Enlarge</a>
 								<figcaption>
-									<h4>Cafetería</h4>
+									<h4>Culto Juvenil</h4>
 								</figcaption>
 							</figure>
 						</li>
 
 						<li class="item col-xs-6 col-md-4 lobby">
 							<figure>
-								<img src="{% static 'img/galeria/lobby1.jpg' %}" alt="11"/>
-								<a href="{% static 'img/galeria/lobby1.jpg' %}" class="more-details"
+								<img src="{% static 'img/galeria/evn3.jpg' %}" alt="11"/>
+								<a href="{% static 'img/galeria/evn3.jpg' %}" class="more-details"
 								   data-title="Instalaciones">Enlarge</a>
 								<figcaption>
-									<h4>Instalaciones</h4>
+									<h4>Eventos</h4>
 								</figcaption>
 							</figure>
 						</li>
 						<li class="item col-xs-6 col-md-4 restaurant">
 							<figure>
-								<img src="{% static 'img/galeria/coffee2.jpeg' %}" alt="11"/>
-								<a href="{% static 'img/galeria/coffee2.jpeg' %}" class="more-details"
+								<img src="{% static 'img/galeria/gal3.jpg' %}" alt="11"/>
+								<a href="{% static 'img/galeria/gal3.jpg' %}" class="more-details"
 								   data-title="Cafetería">Enlarge</a>
 								<figcaption>
-									<h4>Cafetería</h4>
+									<h4>Galeria</h4>
 								</figcaption>
 							</figure>
 						</li>
 						<li class="item col-xs-6 col-md-4 restaurant">
 							<figure>
-								<img src="{% static 'img/galeria/simple.jpeg' %}" alt="11"/>
-								<a href="{% static 'img/galeria/simple.jpeg' %}" class="more-details"
+								<img src="{% static 'img/galeria/gal4.jpg' %}" alt="11"/>
+								<a href="{% static 'img/galeria/gal4.jpg' %}" class="more-details"
 								   data-title="Cafetería">Enlarge</a>
 								<figcaption>
 									<h4>Cafetería</h4>
@@ -261,8 +258,8 @@ Inicio
 						</li>
 						<li class="item col-xs-6 col-md-4 lobby">
 							<figure>
-								<img src="{% static 'img/galeria/lobby2.jpg' %}" alt="11"/>
-								<a href="{% static 'img/galeria/lobby2.jpg' %}" class="more-details"
+								<img src="{% static 'img/galeria/gal5.jpg' %}" alt="11"/>
+								<a href="{% static 'img/galeria/gal5.jpg' %}" class="more-details"
 								   data-title="Instalaciones">Enlarge</a>
 								<figcaption>
 									<h4>Instalaciones</h4>
@@ -272,8 +269,8 @@ Inicio
 						
 						<li class="item col-xs-6 col-md-4 rooms">
 							<figure>
-								<img src="{% static 'img/galeria/room1.jpg' %}" alt="11"/>
-								<a href="{% static 'img/galeria/room1.jpg' %}" class="more-details" data-title="Comfortable Rooms">Enlarge</a>
+								<img src="{% static 'img/galeria/gal6.jpg' %}" alt="11"/>
+								<a href="{% static 'img/galeria/gal6.jpg' %}" class="more-details" data-title="Comfortable Rooms">Enlarge</a>
 								<figcaption>
 									<h4>Habitaciones</h4>
 								</figcaption>
@@ -301,7 +298,7 @@ Inicio
 			<div class="t-sec clearfix">
 				<div class="widget-box col-sm-8 col-md-5">
 					<a href="#" id="t-logo">
-						<img align= "right" class="img-responsive" src="{% static 'img/logo/villo.png'%}">
+						<img align= "right" class="img-responsive" src="{% static 'img/logo/logo.jpeg'%}">
 					</a>
 				
 					</div>
@@ -313,16 +310,16 @@ Inicio
 							<ul class="contact-info">
 								<li>
 									<i class="fa fa-home"></i>
-									Sucre 07-61 e/ 10 de Agosto y José A. Eguiguren
+									Forestal: Av Chican & Yangana
 								</li>
 								<li>
 									<i class="fa fa-phone"></i>
-									(072) 570-199
-									(072) 570-651
+									(+593) 999-999999
+									(+593) 2212-651
 								</li>
 								<li>
 									<i class="fa fa-envelope"></i>
-									hotelvillonacoloja@gmail.com
+									info@fuegosanto.ec
 								</li>
 							</ul>
 						</div>
@@ -332,7 +329,7 @@ Inicio
 					<div class="widget-content contact">
 						<ul class="social-icons list-inline">
 							<li>
-							 	<a href="https://www.facebook.com/Hotel-Villonaco-Loja-1597341817147701/" target="_blank">
+							 	<a href="https://www.facebook.com/fuegosanto.iglesia?eid=ARARgw0_fTrXIDWfnD6p6mq_BXcatoVA2jPYS4ZyNaGM1mDzfweV8O-9pMRyojjjg8J-aEau_-waTRIv" target="_blank">
 								<i class="fa fa-facebook"></i>
 								</a>
 							</li>
@@ -350,7 +347,7 @@ Inicio
 					<div class="contact-info">
 					 <li>
 						<i class="fa fa-envelope"></i>
-							lourdes.cueva96@gmail.com
+							info@fuegosanto.ec
 					</li>
 					
 				</div>
