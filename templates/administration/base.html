@@ -102,7 +102,7 @@
                 <li class="{% if request.resolver_match.url_name == 'administracion' %}active{% endif %}">
                     <a href="{%url 'administracion' %}">
                         <i class="pe-7s-graph"></i>
-                        <p>Inicio</p>
+                        <p>Panel</p>
                     </a>
                 </li>
                 <li class="{% if request.resolver_match.url_name == 'lista_usuarios' %}active{% endif %}">
@@ -114,39 +114,28 @@
                 <li class="{% if request.resolver_match.url_name == 'lista_clientes' %}active{% endif %}">
                     <a href="{% url 'lista_clientes' %}">
                         <i class="pe-7s-users"></i>
-                        <p>Admin. de Clientes</p>
+                        <p>Celulas</p>
                     </a>
                 </li>
                  <li class="{% if request.resolver_match.url_name == 'lista_servicios' %}active{% endif %}">
                     <a href="{% url 'lista_servicios' %}">
                         <i class="ravis-icon-room-service"></i>
-                        <p>Admin. de Servicios</p>
+                        <p>Consolidaciòn</p>
                     </a>
                 </li>
                 <li class="{% if request.resolver_match.url_name == 'lista_tipohabitaciones' %}active{% endif %}">
                     <a href="{% url 'lista_tipohabitaciones' %}">
                         <i class="ravis-icon-hotel-room "></i>
-                        <p>Admin. Tipo de Habitación</p>
+                        <p>Ministerios</p>
                     </a>
                 </li>
                 <li class="{% if request.resolver_match.url_name == 'lista_habitaciones' %}active{% endif %}">
                     <a href="{% url 'lista_habitaciones' %}">
                         <i class="ravis-icon-hotel-room"></i>
-                        <p>Admin. de Habitaciones</p>
+                        <p>Reportes</p>
                     </a>
                 </li>
-                <li class="{% if request.resolver_match.url_name == 'lista_reservas' %}active{% endif %}">
-                    <a href="{% url 'lista_reservas' %}">
-                        <i class="pe-7s-date"></i>
-                        <p>Admin. de Reservas</p>
-                    </a>
-                </li>
-                <li class="{% if request.resolver_match.url_name == 'lista_facturas' %}active{% endif %}">
-                    <a href="{% url 'lista_facturas' %}">
-                        <i class="pe-7s-news-paper"></i>
-                        <p>Generar Factura</p>
-                    </a>
-                </li>
+                
 				<li class="active-pro {% if request.resolver_match.url_name == 'configuracion' %}active{% endif %}">
                     <a href="{% url 'configuracion' %}">
                         <i class="pe-7s-tools"></i>

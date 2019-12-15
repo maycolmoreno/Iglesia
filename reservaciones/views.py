@@ -192,7 +192,7 @@ def listar_galeria(request):
 	return render(request, 'administration/lista_galeria.html', { 'listagaleria':galeria, })
 
 @staff_member_required
-def crear_cliente(request):
+def crear_usuario(request):
 	if request.method == "POST":
 		clienteexiste = Persona.objects.get(cedula=request.POST["cedula"])
 		if clienteexiste:
@@ -201,31 +201,35 @@ def crear_cliente(request):
 			cliente = Persona.objects.create(
 			cedula = request.POST["cedula"],
 			nombre = request.POST["nombres"],
-			apellido = request.POST["apellidos"],
-			nacionalidad = request.POST["nacional"],
-			direccion = request.POST["direccion"],
 			telefono = request.POST["telefono"],
+			barrio= request.POST["barrio"],
+			direccion = request.POST["direccion"],
+			e_civil = request.POST["Estado Civil"],
+			f_nac = request.POST["Fecha de nacieminto"],
+			estado = request.POST["Activo o Inactivo"],
+   			genero = request.POST["M o F"],
+			email = request.POST["email"],
 			)
 			cliente.save()
 
 	return render(request, 'administration/crear_cliente.html', {})
 
-@staff_member_required
-def crear_usuario(request):
-	if request.method == "POST":
-		usuario = User.objects.create(
-			first_name = request.POST["nombres"], 
-			last_name = request.POST["apellidos"],
-			email = request.POST["correo"],
-			username = request.POST["usuario"],
-			password = request.POST["contra"],
-			is_superuser = False,
-			is_staff = True,
-			is_active = True,
-			)
-		usuario.save()
+# @staff_member_required
+# def crear_cliente(request):
+# 	if request.method == "POST":
+# 		usuario = Persona.objects.create(
+# 			first_name = request.POST["nombres"], 
+# 			last_name = request.POST["apellidos"],
+# 			email = request.POST["correo"],
+# 			username = request.POST["usuario"],
+# 			password = request.POST["contra"],
+# 			is_superuser = False,
+# 			is_staff = True,
+# 			is_active = True,
+# 			)
+# 		usuario.save()
 
-	return render(request, 'administration/crear_usuario.html', {})
+# 	return render(request, 'administration/crear_usuario.html', {})
 
 @staff_member_required
 def crear_habitacion(request):

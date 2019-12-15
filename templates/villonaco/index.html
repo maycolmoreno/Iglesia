@@ -9,286 +9,500 @@ Inicio
 {% endblock scripts %}
 
 {% block body %}
- <body class="home-page-1">
-	<div class="main-wrapper">
+ {% comment %} <div id='preloader'>
+		<div id='status'>
+			<img src="{% static 'img/loading.gif' %}" alt='LOADING....!!!!!' />
+		</div>
+	</div> {% endcomment %}
+
 
 	{% block header %}
-		<header id="main-header">
-			<div class="inner-container container">
-				<div class="l-sec col-xs-8 col-sm-6 col-md-3">
-					<a href="#" id="t-logo">
-						<img align= "right" class="img-responsive" src="{% static 'img/logo/logo.jpeg'%}">
-					</a>
-				</div>
-				<div class="r-sec col-xs-4 col-sm-6 col-md-9">
-					<nav id="main-menu">
-						<ul class="list-inline">
-							<li class="active"><a href="/">Inicio</a> </li>
-							<li><a href="{% url 'quienes_somos' %}">Eventos</a> </li>
-							<li><a href="{% url 'habitaciones' %}">Agendas</a> </li>
-							<li><a href="{% url 'galeria' %}">Galería</a> </li>
-							<li ><a href="{% url 'contactos' %}">Contactos</a></li>	
-						</ul>
-					</nav>
-					<div id="main-menu-handle" class="ravis-btn btn-type-2"><i class="fa fa-bars"></i><i class=" fa fa-close"></i></div>
-					{% if user.is_authenticated %}
-					<a href="/accounts/logout" id="header-book-bow" class="ravis-btn btn-type-2">
-					<i class="glyphicon glyphicon-log-out"></i>
-					<span>Cerrar Sesion</span> 
-					</a>
-					{% else %}
-					<a href="{% url 'disponibilidad' %}" id="header-book-bow" class="ravis-btn btn-type-2">
-					<span>Iniciar Sesion</span> 
-					<i class="fa fa-calendar"></i>
-					</a>
-					{% endif %}
+		<header id="home">
+		<div class="main-navigation">
+			<div class="container">
+				<div class="row">
+					<!-- logo-area-->
+					<div class="col-xl-2 col-lg-3 col-md-3">
+						<div class="logo-area">
+							<a href="/"><img src="{% static 'img/logo.png'  %}" alt="enventer"></a>
+						</div>
+					</div>
+					<!-- mainmenu-area-->
+					<div class="col-xl-10 col-lg-9 col-md-9">
+						<div class="main-menu f-right">
+							<nav id="mobile-menu">
+								<ul>
+									<li>
+										<a class="current" href="index.html">home</a>
+									</li>
+									<li>
+										<a href="about-us.html">about</a>
+									</li>
+									<li>
+										<a href="team.html">team</a>
+									</li>
+									<!-- dropdown menu-area-->
+									<li>
+										<a href="#" onclick="return false">pages <i class="fas fa-angle-down"></i>
+										</a>
+										<ul class="dropdown">
+											<li><a href="about-us.html">about us</a></li>
+											<li><a href="portfolio.html">portfolio</a></li>
+											<li><a href="portfolio2.html">portfolio two</a></li>
+											<li><a href="single-portfolio.html">single portfolio</a></li>
+											<li><a href="blog.html">blog page</a></li>
+											<li><a href="single-blog.html">single blog</a></li>
+											<li><a href="single-blog2.html">single blog two</a></li>
+											<li><a href="team.html">our team</a></li>
+											<li><a href="contact.html">contact us</a></li>
+											<li><a href="404.html">404 Page</a></li>
+										</ul>
+									</li>
+									<li>
+										<a href="contact.html">contact</a>
+									</li>
+								</ul>
+							</nav>
+						</div>
+						<!-- mobile menu-->
+						<div class="mobile-menu"></div>
+						<!--Search-->
+						<div class="search-box-area">
+							<div id="search" class="fade">
+								<a href="#" class="close-btn" id="close-search">
+									<em class="fa fa-times"></em>
+								</a>
+								<input placeholder="what are you looking for?" id="searchbox" type="search" />
+							</div>
+							<div class="search-icon-area">
+								<a href='#search'>
+									<i class="fa fa-search"></i>
+								</a>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
-			<div id="mobile-menu-container"></div>
-		</header>
+		</div>
+	</header>
 	{% endblock header %}
 	
-		
-	{% block slider %}
-			<div class="slider-available-sec">
-			<!-- Main Slider -->
-
-			<section id="main-slider">
-
-				<div class="items">
-					<div class="img-container" data-bg-img="{% static 'img/galeria/gal6.jpg' %}"></div>
-					
-					<div class="slide-caption">
-						<div class="inner-container clearfix">
-							<div class="up-sec">Iglesia Fuego Santo</div>
-							<div class="down-sec">"Iglesia Cristiana"</div>
-						</div>
-					</div>
-				</div>
-				<div class="items">
-					<div class="img-container" data-bg-img="{% static 'img/galeria/gal5.jpg' %}"></div>
-					<div class="slide-caption">
-						<div class="inner-container clearfix">
-							<div class="up-sec">La mejor atención </div>
-							<div class="down-sec">Siéntete como en casa</div>
-						</div>
-					</div>
-				</div>
-				<div class="items">
-					<div class="img-container" data-bg-img="{% static 'img/galeria/gal4.jpg' %}"></div>
-					<div class="slide-caption">
-						<div class="inner-container clearfix">
-							<div class="up-sec">Habitaciones</div>
-							<div class="down-sec">Cómodas y Confortables</div>
-						</div>
-					</div>
-				</div>
-				<div class="items">	
-					<div class="img-container" data-bg-img="{% static 'img/logo_fuego_santo.jpg' %}"></div>
-					<div class="slide-caption">
-						<div class="inner-container clearfix">
-							<div class="up-sec">Alojamiento</div>
-							<div class="down-sec">Confortable y Satisfactorio</div>
-						</div>
-					</div>
-				</div>
-			</section>
-			<!-- End of Main Slider -->
-		</div>
-			
-		
-	{% endblock slider %}
+	
 
 	{% block contenido1 %}
-	<section id="main-availability-form">
-				<!--<div class="inner-container container">
-					<div class="l-sec col-md-8">
-						<div class="ravis-title">
-							<div class="inner-box">
-								<div class="title">Encuentra una habitación</div>
-								<div class="sub-title">Cuando deseas visitarnos</div>
+	<section>
+		<div class="header-content-area">
+			<div class="container">
+				<!--header pattern-->
+				<div class="header-pattern-1">
+					<img src="{% static 'img/header-pattern-1.png' %}' %}" alt="">
+				</div>
+				<div class="header-pattern-2">
+					<img src="{% static 'img/header-pattern2.png'  %}" alt="">
+				</div>
+				<div class="header-animation-area">
+					<div class="row">
+						<div class="col-xl-12 col-lg-12 col-md-12">
+							<!--header text-->
+							<div class="intro-text">
+								<h1 data-aos="slide-right" data-aos-anchor-placement="top-bottom" data-aos-delay="700" data-aos-duration="1200">Creativity is a most <br> valuable asset</h1>
+								<p data-aos="fade-in" data-aos-anchor-placement="top-bottom" data-aos-delay="1500" data-aos-duration="1200">Lorem ipsum dolor sit amet, consectetur adipisicing elit. <br>
+									Quod ab tenetur itaque ullam repellendus ipsum! Nesciunt, <br> deserunt porro nihil culpa illo deleniti.</p>
+								<div class="learnmore" data-aos="fade-in" data-aos-anchor-placement="top-bottom" data-aos-delay="1500" data-aos-duration="1200">
+									<a href="#" class="skill-btn">hire us</a>
+									<div class="learnmore2">
+										<a href="https://www.youtube.com/watch?v=IMbG5et2pZw" class="skill-btn-youtube popup-youtube"><i class="far fa-play-circle"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!--header artwork-->
+						<div class="header-1-artwork">
+							<div class="layer">
+								<img src="{% static 'img/header-1-artwork.png'  %}" alt="">
+								<div class="layer-1" data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-delay="800" data-aos-duration="1000">
+									<img src="{% static 'img/man-in-board.png'  %}" alt="">
+								</div>
+								<div class="layer-2" data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-delay="800" data-aos-duration="1000">
+									<img src="{% static 'img/man-in-pc.png'  %}" alt="">
+								</div>
+								<div class="layer-3">
+									<img src="{% static 'img/spin.png'  %}" alt="">
+								</div>
 							</div>
 						</div>
 					</div>
-					<div class="r-sec col-md-4">
-						<form class="booking-form clearfix" action="{% url 'disponibilidad'%}">  Do Not remove the classes -->
-						<!--	<div class="col-md-3">
-								<button type="submit" class="ravis-btn btn-type-1">
-									<span class="inner-box">
-										Reserva ahora
-									</span>
-								</button>
-							</div>
-						</form>-->
-						
-
-					</div>
-				</div>
-			</section>
-	{% endblock contenido1 %}
-	{% block contenido2 %}
-		<!--Welcome Section-->
-		<section id="welcome-section">
-			<div class="inner-container container">
-				<div class="l-sec col-md-7">
-					<div class="ravis-title-t-1">
-				
-						<div class="title"><span>Iglesia Fuego Santo</span></div>
-						<!--<div class="sub-title">Tu segundo hogar en Loja</div>-->
-					</div>
-					<div class="content">
-						Lorem Ipsum es simplemente un texto ficticio de la industria de impresión y composición tipográfica. Lorem Ipsum ha sido el texto ficticio estándar de la industria desde el año 1500, cuando una impresora desconocida tomó una galera de tipo y la mezcló para hacer un libro de muestras. Ha sobrevivido no solo cinco siglos, sino también el salto a la composición electrónica, permaneciendo esencialmente sin cambios. Se popularizó en la década de 1960 con el lanzamiento de las hojas de Letraset que contienen pasajes de Lorem Ipsum, y más recientemente con software de publicación de escritorio como Aldus PageMaker
-					</div>
-					<a href="{% url 'quienes_somos' %}" class="ravis-btn btn-type-2">Leer Más..</a>
-				</div>
-				<div class="r-sec col-md-5">
-					<img src="{% static 'img/galeria/fundadores.jpg' %}" alt="Iglesia Fuego Santo">
 				</div>
 			</div>
-		</section>
-		<!--End of Welcome Section-->	
+		</div>
+	</section>
+	{% endblock contenido1 %}
+	{% block contenido2 %}
+		<section>
+		<div class="home-about-area">
+			<div class="container">
+				<div class="row">
+					<!--about image-->
+					<div class="col-xl-6 col-lg-6 col-md-6">
+						<div class="home-about-image">
+							<img src="{% static 'img/home-about.jpg'  %}" alt="">
+						</div>
+					</div>
+					<!--about text-->
+					<div class="col-xl-6 col-lg-6 col-md-6">
+						<div class="section-heading-1 home-about-text">
+							<h4>About US</h4>
+							<h3>Know interesting things</h3>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam placerat rutrum turpis, sit amet hendrerit metus vulputate id. Nulla laoreet maximus feugiat consectetur. </p>
+							<div class="section-button">
+								<a href="#">Read More</a>
+							</div>
+							<div class="e-pattern">
+								<img src="{% static 'img/expertise/e-pattern.png'  %}" alt="">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 
 	{% endblock contenido2 %}
 
 	{% block contenido3 %}
-		<!--Habitaciones-->
-		<section id="luxury-rooms" class="clearfix">
-			<div class="room-boxes col-sm-6 col-md-4">
-				<a href="{% url 'disponibilidad' %}" class="inner-container" data-bg="{% static 'img/galeria/evn1.jpg' %}">
-					<span class="ravis-title">
-						<span class="inner-box">
-							<span class="title">Eventos</span>
-							<span class="sub-title">Habitación de uso individual</span>
-						</span>
-					</span>
-				</a>
+		<section>
+		<div class="services-area">
+			<svg id="curve" data-name="layer 1" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 1416.99 174.01">
+				<path class="cls-1" d="M0,280.8S283.66,59,608.94,163.56s437.93,150.57,808,10.34V309.54H0V280.8Z" transform="translate(0 -135.53)" />
+			</svg>
+			<div class="container">
+				<div class="row">
+					<div class="col-xl-6 col-lg-6 col-md-5 d-flex align-items-center">
+						<!--service heading text-->
+						<div class="section-heading-2 section-heading-2-p">
+							<h4>our services</h4>
+							<h3>Services We provides</h3>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam placerat rutrum turpis, sit amet hendrerit metus vulputate id. Nulla laoreet maximus feugiat. Nullam rhoncus, orci vitae convallis venenatis Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam placerat rutrum turpis, sit amet hendrerit metus.</p>
+							<div class="section-button">
+								<a href="#">get service</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-xl-6 col-lg-6 col-md-7">
+						<div class="row">
+							<!--service box-->
+							<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 d-flex align-items-center">
+								<div class="single-service" data-aos="fadein" data-aos-anchor-placement="top-bottom" data-aos-delay="100" data-aos-duration="1000">
+									<div class="service-icon">
+										<img src="{% static 'img/service/1.png'  %}" alt="">
+									</div>
+									<div class="service-text">
+										<h3>Theme Development</h3>
+										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam placerat rutrum turpis.</p>
+									</div>
+									<div class="servive-p-1">
+										<img src="{% static 'img/service/service-p-1.png'  %}" alt="">
+									</div>
+								</div>
+							</div>
+							<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 margin-top-sb-30">
+								<div class="row">
+									<!--service box-->
+									<div class="col-xl-12">
+										<div class="single-service">
+											<div class="service-icon">
+												<img src="{% static 'img/service/3.png'  %}" alt="">
+											</div>
+											<div class="service-text">
+												<h3>Digital Marketing</h3>
+												<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam placerat rutrum turpis.</p>
+											</div>
+										</div>
+									</div>
+									<!--service box-->
+									<div class="col-xl-12">
+										<div class="single-service service-mt-30" data-aos="fadein" data-aos-anchor-placement="top-bottom" data-aos-delay="300" data-aos-duration="1000">
+											<div class="service-icon">
+												<img src="{% static 'img/service/2.png'  %}" alt="">
+											</div>
+											<div class="service-text">
+												<h3>UI/UX Design</h3>
+												<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam placerat rutrum turpis.</p>
+											</div>
+											<div class="servive-p-2">
+												<img src="{% static 'img/service/service-p-3.png'  %}" alt="">
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
-			<div class="room-boxes col-sm-6 col-md-4">
-				<a href="{% url 'disponibilidad' %}" class="inner-container" data-bg="{% static 'img/galeria/gal1.jpeg' %}">
-					<span class="ravis-title">
-						<span class="inner-box">
-							<span class="title">Galeria</span>
-							<span class="sub-title">Habitación ideal para parejas</span>
-						</span>
-					</span>
-				</a>
-			</div>
-			<div class="room-boxes col-sm-12 col-md-4">
-				<a href="{% url 'disponibilidad' %}" class="inner-container" data-bg="{% static 'img/galeria/evn3.jpg' %}">
-					<span class="ravis-title">
-						<span class="inner-box">
-							<span class="title">Eventos</span>
-							<span class="sub-title">Habitación para familias pequeñas</span>
-						</span>
-					</span>
-				</a>
-			</div>
-		</section>
-		<!--End Habitaciones-->
+		</div>
+	</section>
 
 	{% endblock contenido3 %}
 
 			
 	{% block contenido4 %}
-	<!-- Gallery -->
-		<section id="gallery">
-			<div class="inner-container container">
-
-				<div class="ravis-title">
-					<div class="inner-box">
-						<div class="title">Galería</div>
-						<div class="sub-title">Te ofrecemos los mejores servicios</div>
-					</div>
-				</div>
-
-				<!-- Gallery Container -->
-				<div class="gallery-container ">
-					<div class="sort-section">
-						<div class="sort-section-container">
-							<div class="sort-handle">Filters</div>
-							<ul class="list-inline">
-								<li><a href="#" data-filter="*" class="active">Todo</a></li>
-								<li><a href="#" data-filter=".restaurant">Galeria</a></li>
-								<li><a href="#" data-filter=".rooms">Eventos</a></li>
-								<li><a href="#" data-filter=".lobby">Historias</a></li>
-							</ul>
+	<section>
+		<div class="portfolio-area">
+			<div class="container">
+				<div class="row">
+					<div class="col-xl-6 col-lg-6 col-md-6">
+						<!--portfolio heading text-->
+						<div class="section-heading-2 portfolio-pattern">
+							<h4>Case Study</h4>
+							<h3>Our Recent Work</h3>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam placerat rutrum turpis, sit amet hendrerit metus vulputate id.</p>
+							<div class="p-pattern">
+								<img src="{% static 'img/portfolio/p-pattern.png'  %}" alt="">
+							</div>
 						</div>
 					</div>
-					<ul class="image-main-box clearfix">
-						<li class="item col-xs-6 col-md-4 restaurant">
-							<figure>
-								<img src="{% static 'img/galeria/evn1.jpg' %}" alt="11"/>
-								<a href="{% static 'img/galeria/evn1.jpg' %}" class="more-details"
-								   data-title="Great View">Enlarge</a>
-								<figcaption>
-									<h4>Culto Juvenil</h4>
-								</figcaption>
-							</figure>
-						</li>
-
-						<li class="item col-xs-6 col-md-4 lobby">
-							<figure>
-								<img src="{% static 'img/galeria/evn3.jpg' %}" alt="11"/>
-								<a href="{% static 'img/galeria/evn3.jpg' %}" class="more-details"
-								   data-title="Instalaciones">Enlarge</a>
-								<figcaption>
-									<h4>Eventos</h4>
-								</figcaption>
-							</figure>
-						</li>
-						<li class="item col-xs-6 col-md-4 restaurant">
-							<figure>
-								<img src="{% static 'img/galeria/gal3.jpg' %}" alt="11"/>
-								<a href="{% static 'img/galeria/gal3.jpg' %}" class="more-details"
-								   data-title="Cafetería">Enlarge</a>
-								<figcaption>
-									<h4>Galeria</h4>
-								</figcaption>
-							</figure>
-						</li>
-						<li class="item col-xs-6 col-md-4 restaurant">
-							<figure>
-								<img src="{% static 'img/galeria/gal4.jpg' %}" alt="11"/>
-								<a href="{% static 'img/galeria/gal4.jpg' %}" class="more-details"
-								   data-title="Cafetería">Enlarge</a>
-								<figcaption>
-									<h4>Cafetería</h4>
-								</figcaption>
-							</figure>
-						</li>
-						<li class="item col-xs-6 col-md-4 lobby">
-							<figure>
-								<img src="{% static 'img/galeria/gal5.jpg' %}" alt="11"/>
-								<a href="{% static 'img/galeria/gal5.jpg' %}" class="more-details"
-								   data-title="Instalaciones">Enlarge</a>
-								<figcaption>
-									<h4>Instalaciones</h4>
-								</figcaption>
-							</figure>
-						</li>
-						
-						<li class="item col-xs-6 col-md-4 rooms">
-							<figure>
-								<img src="{% static 'img/galeria/gal6.jpg' %}" alt="11"/>
-								<a href="{% static 'img/galeria/gal6.jpg' %}" class="more-details" data-title="Comfortable Rooms">Enlarge</a>
-								<figcaption>
-									<h4>Habitaciones</h4>
-								</figcaption>
-							</figure>
-						</li>
-
-					</ul>	
-					<a href="{% url 'galeria' %}" class="gallery-more-btn ravis-btn btn-type-2">Más ...</a>
+					<!--portfolio view more button-->
+					<div class="col-xl-6 col-lg-6 col-md-6">
+						<div class="portfolio-button-area">
+							<div class="section-button">
+								<a href="#">view more</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row portfolio-item-slider">
+					<!--single potfolio item-->
+					<div class="single-portfolio-item">
+						<img src="{% static 'img/portfolio/p1.png'  %}" alt="">
+						<div class="portfolio-item-content">
+							<div class="item-icon">
+								<a href="#"><i class="fas fa-link"></i></a>
+							</div>
+							<div class="item-text">
+								<h5>Art is every thing</h5>
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti explicabo, ea dolores.</p>
+							</div>
+						</div>
+					</div>
+					<!--single potfolio item-->
+					<div class="single-portfolio-item">
+						<img src="{% static 'img/portfolio/p2.png'  %}" alt="">
+						<div class="portfolio-item-content">
+							<div class="item-icon">
+								<a href="#"><i class="fas fa-link"></i></a>
+							</div>
+							<div class="item-text">
+								<h5>Art is every thing</h5>
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti explicabo, ea dolores.</p>
+							</div>
+						</div>
+					</div>
+					<!--single potfolio item-->
+					<div class="single-portfolio-item">
+						<img src="{% static 'img/portfolio/p3.png'  %}" alt="">
+						<div class="portfolio-item-content">
+							<div class="item-icon">
+								<a href="#"><i class="fas fa-link"></i></a>
+							</div>
+							<div class="item-text">
+								<h5>Art is every thing</h5>
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti explicabo, ea dolores.</p>
+							</div>
+						</div>
+					</div>
+					<!--single potfolio item-->
+					<div class="single-portfolio-item">
+						<img src="{% static 'img/portfolio/p4.png'  %}" alt="">
+						<div class="portfolio-item-content">
+							<div class="item-icon">
+								<a href="#"><i class="fas fa-link"></i></a>
+							</div>
+							<div class="item-text">
+								<h5>Art is every thing</h5>
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti explicabo, ea dolores.</p>
+							</div>
+						</div>
+					</div>
+					<!--single potfolio item-->
+					<div class="single-portfolio-item">
+						<img src="{% static 'img/portfolio/p1.png'  %}" alt="">
+						<div class="portfolio-item-content">
+							<div class="item-icon">
+								<a href="#"><i class="fas fa-link"></i></a>
+							</div>
+							<div class="item-text">
+								<h5>Art is every thing</h5>
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti explicabo, ea dolores.</p>
+							</div>
+						</div>
+					</div>
+					<!--single potfolio item-->
+					<div class="single-portfolio-item">
+						<img src="{% static 'img/portfolio/p2.png'  %}" alt="">
+						<div class="portfolio-item-content">
+							<div class="item-icon">
+								<a href="#"><i class="fas fa-link"></i></a>
+							</div>
+							<div class="item-text">
+								<h5>Art is every thing</h5>
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti explicabo, ea dolores.</p>
+							</div>
+						</div>
+					</div>
+					<!--single potfolio item-->
+					<div class="single-portfolio-item">
+						<img src="{% static 'img/portfolio/p3.png'  %}" alt="">
+						<div class="portfolio-item-content">
+							<div class="item-icon">
+								<a href="#"><i class="fas fa-link"></i></a>
+							</div>
+							<div class="item-text">
+								<h5>Art is every thing</h5>
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti explicabo, ea dolores.</p>
+							</div>
+						</div>
+					</div>
+					<!--single potfolio item-->
+					<div class="single-portfolio-item">
+						<img src="{% static 'img/portfolio/p4.png'  %}" alt="">
+						<div class="portfolio-item-content">
+							<div class="item-icon">
+								<a href="#"><i class="fas fa-link"></i></a>
+							</div>
+							<div class="item-text">
+								<h5>Art is every thing</h5>
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti explicabo, ea dolores.</p>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
-		</section>
-		<!-- End of Gallery -->
+		</div>
+	</section>
 
 			
 	{% endblock contenido4 %}
 
 
+	{% block contenido5 %}
+	<section>
+		<div class="expertise-area">
+			<div class="container">
+				<div class="row">
+					<!--expertise image-->
+					<div class="col-xl-6 col-lg-6 col-md-6">
+						<div class="expertise-image">
+							<img src="{% static 'img/expertise/expertise.png'  %}" alt="">
+						</div>
+					</div>
+					<!--expertise heading text-->
+					<div class="col-xl-6 col-lg-6 col-md-6 d-flex align-items-center">
+						<div class="section-heading-1 home-expertise-text">
+							<h4>Experties</h4>
+							<h3>Marketing & Design</h3>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam placerat rutrum turpis, sit amet hendrerit metus vulputate id. Nulla laoreet maximus feugiat. Nullam rhoncus, orci vitae convallis hendrerit feugiat venenatis. Nulla laoreet maximus feugiat.</p>
+							<div class="section-button">
+								<a href="#">get quote</a>
+							</div>
+							<div class="e-pattern">
+								<img src="{% static 'img/expertise/e-pattern.png' %}' %}" alt="">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 
+	{% endblock contenido5 %}
+
+	{% block contenido6 %}
+	<section>
+		<div class="expertise-area">
+			<div class="container">
+				<div class="row">
+					<!--expertise image-->
+					<div class="col-xl-6 col-lg-6 col-md-6">
+						<div class="expertise-image">
+							<img src="{% static 'img/expertise/expertise.png' %}' %}" alt="">
+						</div>
+					</div>
+					<!--expertise heading text-->
+					<div class="col-xl-6 col-lg-6 col-md-6 d-flex align-items-center">
+						<div class="section-heading-1 home-expertise-text">
+							<h4>Experties</h4>
+							<h3>Marketing & Design</h3>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam placerat rutrum turpis, sit amet hendrerit metus vulputate id. Nulla laoreet maximus feugiat. Nullam rhoncus, orci vitae convallis hendrerit feugiat venenatis. Nulla laoreet maximus feugiat.</p>
+							<div class="section-button">
+								<a href="#">get quote</a>
+							</div>
+							<div class="e-pattern">
+								<img src="{% static 'img/expertise/e-pattern.png' %}' %}" alt="">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	{% endblock contenido6 %}
+	{% block contenido7 %}
+	<section>
+		<div class="main-counter-area">
+			<div class="container">
+				<div class="row">
+					<div class="col-xl-6">
+						<div class="row counter-area-small">
+							<!-- single-coutdown-->
+							<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 single-count-item-mb">
+								<div class="single-count-area"><img src="{% static 'img/counter/manager.png' %}' %}" alt=""> <br> <span class="counter">1800</span><span>+</span>
+									<p>projects</p>
+								</div>
+							</div>
+							<!-- single-coutdown-->
+							<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 single-count-item-mb">
+								<div class="single-count-area"><img src="{% static 'img/counter/chart.png' %}' %}" alt=""><br><span class="counter">1000</span><span>+</span>
+									<p>clients</p>
+								</div>
+							</div>
+							<!-- single-coutdown-->
+							<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+								<div class="single-count-area"> <img src="{% static 'img/counter/coin.png' %}' %}" alt=""> <br> <span class="counter">150</span><span>k+</span>
+									<p>profit</p>
+								</div>
+							</div>
+							<!-- single-coutdown-->
+							<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 margin-top-sb-30">
+								<div class="single-count-area"> <img src="{% static 'img/counter/theme.png' %}' %}" alt=""> <br> <span class="counter">500</span><span>+</span>
+									<p>coming</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- section heading text-->
+					<div class="col-xl-6 d-flex align-items-center">
+						<div class="section-heading-1 home-counter-text">
+							<h4>Summary</h4>
+							<h3>Achivement we have</h3>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit eos iste accusamus ipsum temporibus officia assumenda, in tempora expedita aperiam magnam voluptatum culpa hic dolore molestiae eius magni! Accusantium optio impedit neque assumenda autem exercitationem aliquam cupiditate, quaerat iusto vero, necessitatibus sapiente accusamus blanditiis voluptas aperiam deleniti alias.</p>
+							<div class="section-button">
+								<a href="#">Request quote</a>
+							</div>
+							<div class="e-pattern">
+								<img src="{% static 'img/expertise/e-pattern.png' %}' %}" alt="">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	{% endblock contenido7 %}
+
+	{% block contenido8 %}
+	
+	{% endblock contenido8 %}
 
 	<!--Footer Section-->
 	{% block footer %}
@@ -343,7 +557,7 @@ Inicio
 						</div>
 					</div>
 				</div>
-				<div class="b-sec clearfix">
+				<!--<div class="b-sec clearfix">
 					<div class="contact-info">
 					 <li>
 						<i class="fa fa-envelope"></i>
@@ -351,7 +565,7 @@ Inicio
 					</li>
 					
 				</div>
-			</div>
+			</div>-->
 		</footer>
 		
 	{% endblock footer %}

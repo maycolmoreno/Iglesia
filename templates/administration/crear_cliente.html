@@ -96,19 +96,26 @@ Nuevo Cliente
 </div>
 
 
-<!-- Text input-->
-       
 <div class="form-group">
-  <label class="col-md-4 control-label">Nacionalidad</label>  
+  <label class="col-md-4 control-label">Télefono</label>  
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
-        <span class="input-group-addon"><i class="fa fa-globe"></i></span>
-  <input name="nacional" placeholder="Nacionalidad" class="form-control" type="text">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+  <input name="telefono" placeholder="Télefono" class="form-control"  type="tel">
     </div>
   </div>
 </div>
 
-<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label">Barrio</label>  
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+  <input name="telefono" placeholder="Barrio" class="form-control"  type="tel">
+    </div>
+  </div>
+</div>
+
       
 <div class="form-group">
   <label class="col-md-4 control-label">Dirección</label>  
@@ -120,17 +127,86 @@ Nuevo Cliente
   </div>
 </div>
 
-<!-- Text input-->
- 
+<div class="form-group"> 
+
+  <label class="col-md-4 control-label">Estado Civil</label>
+    <div class="col-md-4 selectContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="fa fa-bed"></i></span>
+    <select name="selec" class="form-control selectpicker" >
+    
+  <option value="Soltero">Soltero</option> 
+  <option value="Casado" selected>Casado</option>
+  <option value="Union Libre">Union Libre</option>
+  <option value="Divorciado">Divorciado</option>
+
+</select>
+    
+    </select>
+  </div>
+</div>
+</div>
+
+     
 <div class="form-group">
-  <label class="col-md-4 control-label">Télefono</label>  
+  <label class="col-md-4 control-label">Add</label>  
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
-        <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-  <input name="telefono" placeholder="Télefono" class="form-control"  type="tel">
+        
+<label><input type="checkbox" id="cbox1" value="first_checkbox"> Lider</label><br>
+<label><input type="checkbox" id="cbox2" value="first_checkbox"> Timoteo</label><br>
+<label><input type="checkbox" id="cbox3" value="first_checkbox"> Anfitrion</label><br>
+
+  
     </div>
   </div>
 </div>
+
+
+<div class="form-group">
+                        <label class="col-md-4 control-label"> Estado</label>
+                        <div class="col-md-4">
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="estado" value="DISPONIBLE" /> Activo
+                                </label>
+                            </div>
+
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="estado" value="NODISPONIBLE" /> INACTIVO                                </label>
+                            </div>
+  
+                        </div>
+                    </div>
+
+
+
+<div class="form-group">
+  <label class="col-md-4 control-label">Fecha</label>  
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="fa fa-globe"></i></span>
+  <input id="date" type="date">
+    </div>
+  </div>
+</div>
+<!-- Text input-->
+       
+<div class="form-group">
+  <label class="col-md-4 control-label">Email</label>  
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="fa fa-globe"></i></span>
+  <input name="nacional" placeholder="Correo Electronico" class="form-control" type="text">
+    </div>
+  </div>
+</div>
+
+<!-- Text input-->
+
+<!-- Text input-->
+ 
 <!-- Button -->
 <div class="form-group">
   <label class="col-md-4 control-label"></label>

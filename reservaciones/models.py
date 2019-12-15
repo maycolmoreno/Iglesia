@@ -17,7 +17,13 @@ class Persona(models.Model):
 	nacionalidad = models.CharField(max_length = 50)
 	direccion = models.CharField(max_length = 200)
 	telefono = models.CharField(max_length = 15)
-	user = models.OneToOneField(settings.AUTH_USER_MODEL)
+	barrio = models.CharField(max_length = 15)
+#	user = models.OneToOneField(settings.AUTH_USER_MODEL)
+	e_civil= models.CharField(max_length = 2000, blank = False, null= False, verbose_name= "Estado Civil")
+	f_nac= models.DateField()
+	estado = models.BooleanField()
+	genero = models.BooleanField()
+	email = models.EmailField()
 
 	def __unicode__(self):
 		return '%s %s %s' % (self.cedula, self.nombre, self.apellido)

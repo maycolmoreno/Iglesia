@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="es">
+<head>
+	
+	<meta charset="UTF-8">
+	<title>{% block title %} TITULO BASE {% endblock %}</title
+	<!-- Website's title ( it will be shown in browser's tab ), Change the website's title based on your Hotel information -->
+	<meta name="description" content="Iglesia Cristiana Fuego Santo ">
+	<!-- Add your Hotel short description -->
+	<meta name="keywords" content="Responsive,HTML5,CSS3,XML,JavaScript">
+	<!-- Add some Keywords based on your Hotel and your business and separate them by comma -->
+	<meta name="author" content="Ronald Moreno, jqwery59@gmail.com">
+	<meta name="viewport"
+		  content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,400italic,700italic%7cPlayfair+Display:400,700%7cGreat+Vibes'
+		  rel='stylesheet' type='text/css'><!-- Attach Google fonts -->
+          <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/styles-light.css' %}"><!-- Attach the main stylesheet file -->
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}"><!-- Attach the main stylesheet file -->
+
+    <link rel="stylesheet" href="{% static 'css/meanmenu.css' %}" rel="stylesheet" />
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.min.css' %}" rel="stylesheet" />
+    <link  href="{% static 'css/aos.min.css' %}" rel="stylesheet" />
+    <link  href="{% static 'css/aos.min.css' %}" rel="stylesheet" />
+    <link  href="{% static 'css/slick.css' %}" rel="stylesheet" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+
+	{% block estilos %}
+    {% endblock estilos %}
+    <link rel="icon" href="img/favicon.png" type="image/png">
+	
+	<script type="text/javascript" src="{% static 'js/vendor/jquery-2.2.4.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/popper.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+
+	<script type="text/javascript" src="{% static 'js/waypoints.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/counterup.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/meanmenu.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/aos.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/isotope.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/aos.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/jquery.backgroundMove.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/slick.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/scrollUp.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/mainjs' %}"></script>
+
+	<script src="{% static 'admin/js/form.js' %}"></script>	
+
+	
+    {% block scripts %}
+    {% endblock scripts %}
+</head>
+{% block body %}
+		
+	{% block header %}
+	{% endblock header %}
+
+	{% block slider %}
+	{% endblock slider %}
+
+	{% block contenido1 %}
+	{% endblock contenido1 %}
+
+	{% block contenido2 %}
+	{% endblock contenido2 %}
+
+	{% block contenido3 %}
+	{% endblock contenido3 %}
+
+	{% block contenido4 %}
+	{% endblock contenido4 %}
+
+	{% block contenido5 %}
+	{% endblock contenido5 %}
+
+	{% block contenido6 %}
+	{% endblock contenido6 %}
+
+	
+	{% block footer %}
+	{% endblock footer %}
+
+
+
+
+{% endblock body %}
+</html>
