@@ -18,7 +18,7 @@ from django.core.mail import EmailMultiAlternatives
 # Create your views here.
 
 def mostrar_inicio(request):
-	return render(request, 'villonaco/index.html', {})
+	return render(request, 'backend/index.html', {})
 
 def mostrar_quienes_somos(request):
 	return render(request, 'villonaco/about.html', {})
